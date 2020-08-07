@@ -76,8 +76,6 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     //margin: EdgeInsets.all(5.0),
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
-
-
                                     decoration: new BoxDecoration(
                                       shape: BoxShape.rectangle,
                                       color: HexColor("#00AAAD"),
@@ -219,7 +217,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //text field for email
+                                    //text field for name
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: new InputDecoration(
@@ -262,6 +260,10 @@ class _RegisterState extends State<Register> {
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                                      onChanged: (val) {
+                                        setState(() => email = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -270,7 +272,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for password
                                     child: new TextFormField(
                                       obscureText: true,
                                       textAlignVertical: TextAlignVertical.center,
@@ -288,6 +290,10 @@ class _RegisterState extends State<Register> {
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
+                                      onChanged: (val) {
+                                        setState(() => password = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -338,6 +344,7 @@ class _RegisterState extends State<Register> {
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+
                                     ),
                                   ), //text box
 
@@ -414,11 +421,15 @@ class _RegisterState extends State<Register> {
                             child: new Text("CONTINUE",
                               style: TextStyle(fontSize: 18),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => GooglePixel3XL2()),
-                              );
+                           onPressed: () async {
+                              if(_formKey.currentState.validate()) //valid or invalid form
+                                {
+                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                                  if(result == null)
+                                    {
+                                      setState(() => error = 'Please provide a valid email');
+                                    }
+                                }
                             },
                           ),
                         ),
