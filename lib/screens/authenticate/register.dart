@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/services/auth.dart';
+import 'package:wdc_login/shared/constants.dart';
 import 'package:wdc_login/shared/loading.dart';
 
 class Register extends StatefulWidget {
@@ -22,6 +23,13 @@ class _RegisterState extends State<Register> {
   String email = "";
   String password = "";
   String error = "";
+
+  String name = "";
+  String address = "";
+  String wasteBin = "";
+  String recBin = "";
+  int userPin = null;
+
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +169,7 @@ class _RegisterState extends State<Register> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Suburb',
+                                        'User Pin',
                                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         textAlign: TextAlign.center,
                                       ),
@@ -222,20 +230,13 @@ class _RegisterState extends State<Register> {
                                     //text field for name
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      onChanged: (val) {
+                                        setState(() => name = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -247,17 +248,7 @@ class _RegisterState extends State<Register> {
                                     //start of text field for email
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       keyboardType: TextInputType.emailAddress,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
@@ -278,17 +269,7 @@ class _RegisterState extends State<Register> {
                                     child: new TextFormField(
                                       obscureText: true,
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
@@ -307,20 +288,13 @@ class _RegisterState extends State<Register> {
                                     //start of text field for email
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      onChanged: (val) {
+                                        setState(() => address = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -332,20 +306,13 @@ class _RegisterState extends State<Register> {
                                     //start of text field for email
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      onChanged: (val) {
+                                        setState(() => userPin = int.parse(val));
+                                      },
 
                                     ),
                                   ), //text box
@@ -358,20 +325,13 @@ class _RegisterState extends State<Register> {
                                     //start of text field for email
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration, //the page/class
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      onChanged: (val) {
+                                        setState(() => wasteBin = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -383,20 +343,13 @@ class _RegisterState extends State<Register> {
                                     //start of text field for email
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white,
-                                        enabledBorder: new OutlineInputBorder(
-                                          //  borderRadius: new BorderRadius.circular(25.0),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          // borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                                          borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
-                                        ),
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
+                                      onChanged: (val) {
+                                        setState(() => recBin = val);
+                                      },
                                     ),
                                   ), //text box
 
@@ -431,7 +384,7 @@ class _RegisterState extends State<Register> {
                               if(_formKey.currentState.validate()) //valid or invalid form
                                 {
                                 setState(() => loading = true);
-                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, userPin);
                                   if(result == null)
                                     {
                                       setState(() => loading = false);
@@ -441,6 +394,7 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                         ),
+
                       ],//a widget
                     ),
                  // ],
@@ -466,68 +420,68 @@ class _RegisterState extends State<Register> {
 
 
 
-    return Scaffold(
-        backgroundColor: Colors.brown[100],
-        appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          title: Text('Sign up'),
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('Sign in'),
-              onPressed: () {
-                widget.toggleView(); //reverses the sign in and reg pages view
-              },
-            ),
-          ],
-        ),
-        body: Container (
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-            child: Form(
-              key: _formKey, //keeps track of state of form - for validation
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20.0),
-                    TextFormField( //email
-                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                      onChanged: (val) {
-                        setState(() => email = val);
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    TextFormField( //password
-                      obscureText: true,
-                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
-                      onChanged: (val) {
-                        setState(() => password = val);
-                      },
-                    ),
-                    SizedBox(height: 20.0),
-                    RaisedButton( //reg button
-                      color: Colors.pink,
-                      child: Text('Sign up', style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () async {
-
-                        if(_formKey.currentState.validate()) //valid or invalid form
-                          {
-                            dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                            if(result == null)
-                              {
-                                setState(() => error = 'please provide a valid email');
-                              }
-                          }
-                      },
-                    ),
-                    SizedBox(height: 12.0), //just an error output
-                    Text (
-                        error,
-                    style: TextStyle(color: Colors.red)),
-                  ],
-                )
-            )
-        )
-    );
+//    return Scaffold(
+//        backgroundColor: Colors.brown[100],
+//        appBar: AppBar(
+//          backgroundColor: Colors.brown[400],
+//          elevation: 0.0,
+//          title: Text('Sign up'),
+//          actions: <Widget>[
+//            FlatButton.icon(
+//              icon: Icon(Icons.person),
+//              label: Text('Sign in'),
+//              onPressed: () {
+//                widget.toggleView(); //reverses the sign in and reg pages view
+//              },
+//            ),
+//          ],
+//        ),
+//        body: Container (
+//            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+//            child: Form(
+//              key: _formKey, //keeps track of state of form - for validation
+//                child: Column(
+//                  children: <Widget>[
+//                    SizedBox(height: 20.0),
+//                    TextFormField( //email
+//                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+//                      onChanged: (val) {
+//                        setState(() => email = val);
+//                      },
+//                    ),
+//                    SizedBox(height: 20.0),
+//                    TextFormField( //password
+//                      obscureText: true,
+//                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
+//                      onChanged: (val) {
+//                        setState(() => password = val);
+//                      },
+//                    ),
+//                    SizedBox(height: 20.0),
+//                    RaisedButton( //reg button
+//                      color: Colors.pink,
+//                      child: Text('Sign up', style: TextStyle(color: Colors.white),
+//                      ),
+//                      onPressed: () async {
+//
+//                        if(_formKey.currentState.validate()) //valid or invalid form
+//                          {
+//                            dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+//                            if(result == null)
+//                              {
+//                                setState(() => error = 'please provide a valid email');
+//                              }
+//                          }
+//                      },
+//                    ),
+//                    SizedBox(height: 12.0), //just an error output
+//                    Text (
+//                        error,
+//                    style: TextStyle(color: Colors.red)),
+//                  ],
+//                )
+//            )
+//        )
+//    );
   }
 }

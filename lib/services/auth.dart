@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wdc_login/models/user.dart';
+import 'package:wdc_login/services/database.dart';
 
 class AuthService {
   //all different methods thats interact to sign in
@@ -51,11 +52,15 @@ class AuthService {
 
 
   //register w/ email and password
-  Future registerWithEmailAndPassword(String email, String password) async
+  Future registerWithEmailAndPassword(String email, String password, String name, String address, String wasteBin, String recBin, int userPin) async
     {
       try {
         AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); //firebase method
         FirebaseUser user = result.user;
+
+        //create new document for the new user
+        await DatabaseService(uid: user.uid).updateUserData(name, address, wasteBin, recBin, userPin);
+
         return _userFromFirebaseUser(user);
       }
       catch(e) {
