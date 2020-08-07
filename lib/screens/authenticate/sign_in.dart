@@ -9,8 +9,7 @@ class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
 }
-//TODO so i finished it - it should sign in with test@testing.com testing
-//but like the avd died so i guess work that out then try it
+
 //https://www.youtube.com/watch?v=Jy82t4IKJSQ
 
 class _SignInState extends State<SignIn> {
@@ -25,49 +24,154 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      backgroundColor: Colors.brown[100],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        title: Text('Sign in'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Register'),
-            onPressed: () {
-              widget.toggleView();
-            },
-          ),
-        ],
-      ),
-      body: Container (
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+      backgroundColor: const Color(0xffffffff),
+      // appBar: AppBar(
+      // Here we take the value from the MyHomePage object that was created by
+      // the App.build method, and use it to set our appbar title.
+      // title: Text(widget.title),
+      //  ),
+      body: Container(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
         child: Form(
-            key: _formKey, //keeps track of state of form - for validation
+          key: _formKey, //keeps track of state of form - for validation
+
           child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+
+            mainAxisAlignment: MainAxisAlignment.center,
+
             children: <Widget>[
-              SizedBox(height: 20.0),
-              TextFormField( //email
-                validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                onChanged: (val) {
-                  setState(() => email = val);
-                },
-              ),
-              SizedBox(height: 20.0),
-              TextFormField( //password
-                obscureText: true,
-                validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-              SizedBox(height: 20.0),
-              RaisedButton(
-                color: Colors.pink,
-                child: Text('Sign in', style: TextStyle(color: Colors.white),
+
+              // logo
+              Container(
+                margin: EdgeInsets.only(left: 20.0),
+                width: 259.0,
+                height: 195.0,
+                //alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: const AssetImage('assests/images/logo.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
-                onPressed: () async {
+              ),
+
+              Container (
+                margin: EdgeInsets.only(top: 50, left: 30),
+                child: Text(
+                  'Log in to your existing WDC Waste\n   account or register a new one',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ),
+
+              //email text box
+              Container (
+                margin: EdgeInsets.only(top: 50, left: 30),
+                width: 350,
+                height: 50,
+
+                //start of text field for email
+                child: new TextFormField(
+                  //textAlign: TextAlign.center,
+                  textAlignVertical: TextAlignVertical.center,
+
+                  decoration: new InputDecoration(
+                    // labelText: "Enter Email",
+
+                    hintText: "Email",
+                    hintStyle: TextStyle(fontSize: 16),
+
+                    fillColor: Colors.white,
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(25.0),
+                      borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                      borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                    ),
+                  ),
+
+                  //validator
+                  validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                onChanged: (val) {
+                  setState(() => email = val); },
+
+                  keyboardType: TextInputType.emailAddress,
+                  style: new TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              ),
+
+              //text field for password
+              Container (
+                width: 350,
+                height: 50,
+               // margin: EdgeInsets.all(5.0),
+                margin: EdgeInsets.only(top: 5, left: 30),
+
+                child: new TextFormField(
+                  obscureText: true,
+                  textAlignVertical: TextAlignVertical.center,
+                  decoration: new InputDecoration(
+
+                    hintText: "Password",
+                    fillColor: Colors.white,
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(25.0),
+                      borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                      borderSide: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                    ),
+                  ),
+                  validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
+                  onChanged: (val) {
+                  setState(() => password = val); },
+
+                  style: new TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              ),
+
+
+              //continue button
+              Container(
+                width: 300.0,
+                height: 50.0,
+                margin: const EdgeInsets.only(top: 60.0, left: 30),
+
+                child:
+                RaisedButton(
+                  padding: const EdgeInsets.all(8.0),
+                  textColor: Colors.white,
+                  color: HexColor("#00AAAD"), //get actual colour
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)),
+                  child: new Text("CONTINUE",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  //onPressed: validateAndSubmit,
+                  onPressed: () async {
 
                   if(_formKey.currentState.validate()) //valid or invalid form
                       {
@@ -78,15 +182,139 @@ class _SignInState extends State<SignIn> {
                        }
                   }
                 },
+                ),
               ),
-              SizedBox(height: 12.0), //just an error output
-              Text (
-                  error,
-                  style: TextStyle(color: Colors.red)),
+
+              //register button
+              Container( //container so i can set the margin
+                width: 300.0,
+                height: 50.0,
+                margin: const EdgeInsets.only(top: 10.0, left: 30),
+
+                child: RaisedButton(
+                  padding: const EdgeInsets.all(8.0),
+                  textColor: Colors.black,
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                      borderRadius: BorderRadius.circular(25)),
+                  child: new Text("Register",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  onPressed: () {
+                    widget.toggleView();
+                  },
+                ),
+              ),
             ],
-          )
-        )
-      )
+          ),
+        ),
+      ),
+
+//      floatingActionButton: FloatingActionButton(
+//        //onPressed: _incrementCounter,
+//        onPressed: () {
+//          Navigator.push(
+//            context,
+//            MaterialPageRoute(builder: (context) => GooglePixel3XL1()),
+//          );
+//        }
+//        //tooltip: 'Increment',
+//       // child: Icon(Icons.add),
+//      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    return Scaffold(
+//      backgroundColor: Colors.white,
+////      appBar: AppBar(
+////        backgroundColor: Colors.brown[400],
+////        elevation: 0.0,
+////        title: Text('Sign in'),
+////        actions: <Widget>[
+////          FlatButton.icon(
+////            icon: Icon(Icons.person),
+////            label: Text('Register'),
+////            onPressed: () {
+////              widget.toggleView();
+////            },
+////          ),
+////        ],
+////      ),
+//      body: Container (
+//        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+//        child: Form(
+//            key: _formKey, //keeps track of state of form - for validation
+//          child: Column(
+//            children: <Widget>[
+//              SizedBox(height: 20.0),
+//              TextFormField( //email
+//                validator: (val) => val.isEmpty ? 'Enter an email' : null,
+//                onChanged: (val) {
+//                  setState(() => email = val);
+//                },
+//              ),
+//              SizedBox(height: 20.0),
+//              TextFormField( //password
+//                obscureText: true,
+//                validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
+//                onChanged: (val) {
+//                  setState(() => password = val);
+//                },
+//              ),
+//              SizedBox(height: 20.0),
+//              RaisedButton(
+//                color: Colors.pink,
+//                child: Text('Sign in', style: TextStyle(color: Colors.white),
+//                ),
+//                onPressed: () async {
+//
+//                  if(_formKey.currentState.validate()) //valid or invalid form
+//                      {
+//                       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+//                        if(result == null)
+//                       {
+//                         setState(() => error = 'credentials are wrong');
+//                       }
+//                  }
+//                },
+//              ),
+//              SizedBox(height: 12.0), //just an error output
+//              Text (
+//                  error,
+//                  style: TextStyle(color: Colors.red)),
+//            ],
+//          )
+//        )
+//      )
+//    ); //end of og scaffold
+
+
+
+  } //these stay!!!
+}
+
+//to be able to use hex colours
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
   }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
