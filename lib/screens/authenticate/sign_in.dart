@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/services/auth.dart';
+import 'package:wdc_login/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
 
@@ -16,6 +17,7 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>(); //used to identify form
+  bool loading = false;
 
   //text field state
   String email = "";
@@ -25,34 +27,15 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return loading ? Loading() : Scaffold( //if loading is true then show loading screen otherwise this screen
       backgroundColor: const Color(0xffffffff),
-      // appBar: AppBar(
-      // Here we take the value from the MyHomePage object that was created by
-      // the App.build method, and use it to set our appbar title.
-      // title: Text(widget.title),
-      //  ),
+
       body: Container(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+
         child: Form(
           key: _formKey, //keeps track of state of form - for validation
 
           child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
 
             mainAxisAlignment: MainAxisAlignment.center,
 
@@ -175,10 +158,13 @@ class _SignInState extends State<SignIn> {
 
                   if(_formKey.currentState.validate()) //valid or invalid form
                       {
+                        //show loading screen
+                        setState(() => loading = true);
                        dynamic result = await _auth.signInWithEmailAndPassword(email, password);
                         if(result == null)
                        {
-                         setState(() => error = 'credentials are wrong');
+                         setState(() => loading = false);
+                         setState(() => error = 'Unable to log in');
                        }
                   }
                 },

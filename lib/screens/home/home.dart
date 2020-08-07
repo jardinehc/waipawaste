@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
+import 'package:wdc_login/screens/tips.dart';
 import 'package:wdc_login/services/auth.dart';
 
 class Home extends StatelessWidget {
@@ -103,12 +104,12 @@ class Home extends StatelessWidget {
                             child: new Text("HELPFUL TIPS",
                               style: TextStyle(fontSize: 18, color: Colors.white),
                             ),
-//                            onPressed: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(builder: (context) => tips()),
-//                              );
-//                            },
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Tips()),
+                              );
+                            },
                           ),
                         ),
 
@@ -213,7 +214,7 @@ class Home extends StatelessWidget {
                         Container(
                           width: 200.0,
                           height: 50.0,
-                          margin: const EdgeInsets.only(top: 20.0),
+                          margin: const EdgeInsets.only(top: 20.0, bottom: 10),
 
                           child:
                           RaisedButton(
