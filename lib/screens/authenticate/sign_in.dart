@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/services/auth.dart';
+import 'package:wdc_login/shared/constants.dart';
 import 'package:wdc_login/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
@@ -47,12 +48,7 @@ class _SignInState extends State<SignIn> {
                 width: 259.0,
                 height: 195.0,
                 //alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: const AssetImage('assests/images/logo.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                decoration: logo,
               ),
 
               Container (

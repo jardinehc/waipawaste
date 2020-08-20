@@ -19,4 +19,16 @@ class DatabaseService {
     });
   }
 
+  //get stream
+  Stream<QuerySnapshot> get userInfos {
+    return userCollection.snapshots();
+  }
+
+  //get user doc stream
+Stream<DocumentSnapshot> get userData {
+    return userCollection.document(uid).snapshots();
+
+}
+
+
 }

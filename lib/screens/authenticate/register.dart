@@ -63,12 +63,7 @@ class _RegisterState extends State<Register> {
                           // margin: EdgeInsets.only(top: 0.0),
                           width: 259.0,
                           height: 195.0,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: const AssetImage('assests/images/logo.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          decoration: logo,
                         ),
 
                         //row c
@@ -86,10 +81,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     //margin: EdgeInsets.all(5.0),
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     //how to ACTUALLY center text
                                     child: Center(
                                       child: Text(
@@ -107,10 +99,7 @@ class _RegisterState extends State<Register> {
                                     // margin: EdgeInsets.all(5.0),
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'Email',
@@ -126,10 +115,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'Password',
@@ -144,10 +130,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'Street Address',
@@ -163,10 +146,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'User Pin',
@@ -182,10 +162,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'Waste Bin Code',
@@ -201,10 +178,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 5.0),
 
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: HexColor("#00AAAD"),
-                                    ),
+                                    decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
                                         'Recycling Bin Code',
@@ -360,7 +334,7 @@ class _RegisterState extends State<Register> {
                           ], //c row widget
                         ), //row c
 
-                        SizedBox(height: 12.0), //just an error output
+                        SizedBox(height: 12.0),
                         Text (
                             error,
                             style: TextStyle(color: Colors.red)),
@@ -368,7 +342,7 @@ class _RegisterState extends State<Register> {
                         Container(
                           width: 300.0,
                           height: 50.0,
-                          margin: const EdgeInsets.only(top: 20.0, bottom: 10),
+                          margin: const EdgeInsets.only(top: 20.0),
 
                           child:
                           RaisedButton(
@@ -394,7 +368,26 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                         ),
+                        Container( //container so i can set the margin
+                          width: 300.0,
+                          height: 50.0,
+                          margin: const EdgeInsets.only(top: 5.0, bottom: 10),
 
+                          child: RaisedButton(
+                            padding: const EdgeInsets.all(8.0),
+                            textColor: Colors.black,
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(color: HexColor("#00AAAD"), width: 2),
+                                borderRadius: BorderRadius.circular(25)),
+                            child: new Text("BACK",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            onPressed: () {
+                              widget.toggleView();
+                            },
+                          ),
+                        ),
                       ],//a widget
                     ),
                  // ],

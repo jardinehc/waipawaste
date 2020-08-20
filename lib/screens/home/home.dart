@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
+import 'package:wdc_login/screens/home/yourinfo.dart';
 import 'package:wdc_login/screens/tips.dart';
 import 'package:wdc_login/services/auth.dart';
+import 'package:wdc_login/services/database.dart';
 
 class Home extends StatelessWidget {
 
@@ -9,6 +11,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         backgroundColor: const Color(0xffffffff),
         body: Center(
@@ -56,12 +59,11 @@ class Home extends StatelessWidget {
                             child: new Text("YOUR INFORMATION",
                               style: TextStyle(fontSize: 18),
                             ),
-//                            onPressed: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(builder: (context) => GooglePixel3XL2()),
-//                              );
-//                            },
+                            onPressed: () { Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => YourInfo()),
+                            );
+                            },
                           ),
                         ),
 
@@ -79,12 +81,8 @@ class Home extends StatelessWidget {
                             child: new Text("WAIPA INFO",
                               style: TextStyle(fontSize: 18),
                             ),
-//                            onPressed: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(builder: (context) => GooglePixel3XL2()),
-//                              );
-//                            },
+                            onPressed: () {
+                            }
                           ),
                         ),
 
@@ -129,12 +127,8 @@ class Home extends StatelessWidget {
                             child: new Text("HISTORY",
                               style: TextStyle(fontSize: 18),
                             ),
-//                            onPressed: () {
-//                              Navigator.push(
-//                              context,
-//                              MaterialPageRoute(builder: (context) => GooglePixel3XL2()),
-//                              );
-//                            },
+                            onPressed: () {
+                            },
                           ),
                         ),
 

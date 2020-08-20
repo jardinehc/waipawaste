@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wdc_login/shared/constants.dart';
 
 import 'authenticate/sign_in.dart';
 
@@ -36,12 +37,7 @@ class Tips extends StatelessWidget {
                           // margin: EdgeInsets.only(top: 0.0),
                           width: 259.0,
                           height: 195.0,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: const AssetImage('assests/images/logo.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          decoration: logo,
                         ),
 
 
