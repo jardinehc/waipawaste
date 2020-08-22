@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
+import 'package:wdc_login/screens/home/changeInfo.dart';
 import 'package:wdc_login/screens/home/data_list.dart';
+import 'package:wdc_login/screens/home/home.dart';
 import 'package:wdc_login/services/database.dart';
 import 'package:wdc_login/shared/constants.dart';
 import 'package:wdc_login/models/user.dart';
@@ -42,8 +44,7 @@ class _YourInfoState extends State<YourInfo> {
           print(user.uid);
           //check theres actually data first
           if (snapshot.hasData) {
-           // if(user.uid != null) {
-            print("has data");
+
             UserData userData = snapshot.data;
 
 
@@ -105,14 +106,39 @@ class _YourInfoState extends State<YourInfo> {
                                           child: IconButton (
 
                                             icon: Icon(Icons.arrow_forward),
-                                            color: Colors.black, onPressed: () {  },
+                                            color: Colors.black, onPressed: () { Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => changeInfo()),
+                                          ); },
                                           ),
-                                        )
-
+                                        ),
                                       ]
 
                                   ), //d
 
+                                ),
+
+                                Container( //container so i can set the margin
+                                  width: 300.0,
+                                  height: 50.0,
+                                  margin: const EdgeInsets.only(top: 5.0, bottom: 10),
+
+                                  child: RaisedButton(
+                                    padding: const EdgeInsets.all(8.0),
+                                    textColor: Colors.black,
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: HexColor("#00AAAD"), width: 2),
+                                        borderRadius: BorderRadius.circular(25)),
+                                    child: new Text("BACK",
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    onPressed: () { Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Home()),
+                                    );},
+                                  ),
                                 ),
 
                                 //dataList(),
