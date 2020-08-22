@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wdc_login/models/user.dart';
 
 class DatabaseService {
 
@@ -19,15 +20,28 @@ class DatabaseService {
     });
   }
 
+  //user data from snapshot
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot)
+  {
+    return UserData(
+      uid: uid,
+      address: snapshot.data['address'],
+      name: snapshot.data['name'],
+      recBin: snapshot.data['recBin'],
+      userPin: snapshot.data['userPin'],
+      wasteBin: snapshot.data['wasteBin'],
+    );
+  }
+
   //get stream
   Stream<QuerySnapshot> get userInfos {
     return userCollection.snapshots();
   }
 
-  //get user doc stream
-Stream<DocumentSnapshot> get userData {
-    return userCollection.document(uid).snapshots();
-
+  //get user doc stream - listen to data from the user
+Stream<UserData> get userData {
+    return userCollection.document(uid).snapshots()
+        .map(_userDataFromSnapshot);
 }
 
 
