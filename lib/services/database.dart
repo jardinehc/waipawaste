@@ -7,7 +7,8 @@ class DatabaseService {
   DatabaseService({ this.uid });
 
   //collection reference
-  final CollectionReference userCollection = Firestore.instance.collection("users");
+  //final CollectionReference userCollection = Firestore.instance.collection("users");
+  final CollectionReference userCollection = Firestore.instance.collection('users');
 
   Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin) async
   {
@@ -20,6 +21,8 @@ class DatabaseService {
     });
   }
 
+
+
   //user data from snapshot
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot)
   {
@@ -29,7 +32,7 @@ class DatabaseService {
       name: snapshot.data['name'],
       recBin: snapshot.data['recBin'],
       userPin: snapshot.data['userPin'],
-      wasteBin: snapshot.data['wasteBin'],
+      wasteBin: snapshot.data['wasteBin']
     );
   }
 
@@ -40,6 +43,8 @@ class DatabaseService {
 
   //get user doc stream - listen to data from the user
 Stream<UserData> get userData {
+    print("users uid from database: ");
+    print(uid);
     return userCollection.document(uid).snapshots()
         .map(_userDataFromSnapshot);
 }

@@ -86,13 +86,13 @@ class _YourInfoState extends State<YourInfo> {
 
                                             children: <Widget>[
                                               new Text(
-                                                userData.name,
+                                                'Welcome ${userData.name}',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                                               ),
 
                                               new Text(
-                                                '\nThis past week Waipa recycled 20,380 cans.\n This is enough to create 10,000 new cans.',
+                                                '\nChange your details if anything has changed,\nyou have moved or recieved new bins',
                                                 //textAlign: TextAlign.center,
                                                 style: TextStyle(color: Colors.black),
                                               ),

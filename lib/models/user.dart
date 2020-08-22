@@ -12,7 +12,7 @@ class UserData {
   final String address;
   final String wasteBin;
   final String recBin;
-  final String userPin;
+  final int userPin;
 
   UserData({ this.uid, this.name, this.address, this.wasteBin, this.recBin, this.userPin});
 }
