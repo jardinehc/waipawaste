@@ -2,17 +2,47 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/history.dart';
+import 'package:wdc_login/services/weights_series.dart';
 import 'package:wdc_login/shared/constants.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:wdc_login/services/weights_series.dart';
 
 import 'home.dart';
 
 class HisPage extends StatelessWidget {
+
+  //https://www.youtube.com/watch?v=Ct4Z8qpD5vY
+  //https://www.digitalocean.com/community/tutorials/flutter-bar-charts
+
+  final List<WeightsSeries> data = [
+    WeightsSeries(
+        date: "10/08",
+        weight: 10,
+        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
+    ),
+    WeightsSeries(
+        date: "03/08",
+        weight: 20,
+        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
+    ),
+    WeightsSeries(
+        date: "27/08",
+        weight: 40,
+        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         backgroundColor: const Color(0xffffffff),
         body: Center(
+
+//          child: WeightChart(
+//              data: data,
+//          )
 
             child: ListView(
                 children: <Widget>[
@@ -41,28 +71,35 @@ class HisPage extends StatelessWidget {
                             color: HexColor("#E3F6F6"),
                           ),
 
-                          child: Row( //row d
+                            child: WeightChart(
+                              data: data,
+                            )
 
-                              children:<Widget> [
-
-                                Column(
-
-                                    children: <Widget>[
-
-                                      //graph in here
-                                      new Sparkline(
-                                        data: [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0],
-                                        lineColor: Color(0xffff6101),
-                                        pointsMode: PointsMode.all,
-                                        pointSize: 8.0,
-                                      ),
-
-                                    ]
-                                ),
-
-
-                              ]
-                          ), //d
+//                          child: Row( //row d
+//
+//                              children:<Widget> [
+//
+//                               // Column(
+//
+//                                  //  children: <Widget>[
+//
+//
+//                                      WeightChart(data: data),
+//
+//                                      //graph in here
+////                                      new Sparkline(
+////                                        data: [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0],
+////                                        lineColor: Color(0xffff6101),
+////                                        pointsMode: PointsMode.all,
+////                                        pointSize: 8.0,
+////                                      ),
+//
+//                                 //   ]
+//                              //  ),
+//
+//
+//                              ]
+//                          ), //d
                         ),
 
                         //back button
@@ -94,8 +131,56 @@ class HisPage extends StatelessWidget {
                   )
                 ]
             )
-        )
+        ),
 
     );
   }
 }
+
+class WeightChart extends StatelessWidget {
+  final List<WeightsSeries> data;
+
+  WeightChart({@required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    //get the data for the chart
+    List<charts.Series<WeightsSeries, String>> series =
+    [
+      charts.Series(
+        id: "Weight",
+        data: data,
+        domainFn: (WeightsSeries series, _) =>
+        series.date,
+        measureFn: (WeightsSeries series, _) =>
+        series.weight,
+        colorFn: (WeightsSeries series, _) =>
+        series.barcolor
+      )
+    ];
+
+    return Container(
+      height: 400,
+      padding: EdgeInsets.all(20),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Text(
+                "Previous 3 waste collections (Kg)",
+                style: Theme.of(context).textTheme.body2,
+              ),
+              Expanded(
+                child: charts.BarChart(series, animate: true),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+
+   // return charts.BarChart(series, animate: true);
+  }
+}
+
