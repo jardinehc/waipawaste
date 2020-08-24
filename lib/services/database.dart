@@ -32,7 +32,12 @@ class DatabaseService {
       name: snapshot.data['name'],
       recBin: snapshot.data['recBin'],
       userPin: snapshot.data['userPin'],
-      wasteBin: snapshot.data['wasteBin']
+      wasteBin: snapshot.data['wasteBin'],
+
+      waste1: snapshot.data['waste1'],
+      waste2: snapshot.data['waste2'],
+      waste3: snapshot.data['waste3'],
+
     );
   }
 

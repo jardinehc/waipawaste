@@ -1,146 +1,140 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/history.dart';
+import 'package:wdc_login/services/database.dart';
 import 'package:wdc_login/services/weights_series.dart';
 import 'package:wdc_login/shared/constants.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:wdc_login/services/weights_series.dart';
+import 'package:wdc_login/shared/loading.dart';
 
 import 'home.dart';
 
 class HisPage extends StatelessWidget {
-
-  //https://www.youtube.com/watch?v=Ct4Z8qpD5vY
   //https://www.digitalocean.com/community/tutorials/flutter-bar-charts
-
-  final List<WeightsSeries> data = [
-    WeightsSeries(
-        date: "10/08",
-        weight: 10,
-        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    WeightsSeries(
-        date: "03/08",
-        weight: 20,
-        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-    WeightsSeries(
-        date: "27/08",
-        weight: 40,
-        barcolor: charts.ColorUtil.fromDartColor(Colors.blue),
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-        backgroundColor: const Color(0xffffffff),
-        body: Center(
+    User user = Provider.of<User>(context);
 
-//          child: WeightChart(
-//              data: data,
-//          )
+    return StreamBuilder<UserData>(
+      stream: DatabaseService(uid: user.uid).userData,
+      builder: (context, snapshot) {
 
-            child: ListView(
-                children: <Widget>[
+        if(snapshot.hasData)
+          {
+            UserData userData = snapshot.data;
 
-                  //Column a
-                  Column(
+            final List<WeightsSeries> data = [
+              WeightsSeries(
+                date: "3 AGO",
+                weight: userData.waste3,
+                barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+              ),
+              WeightsSeries(
+                date: "2 AGO",
+                weight: userData.waste2,
+                barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+              ),
+              WeightsSeries(
+                date: "LAST ",
+                weight: userData.waste1,
+                barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+              ),
+            ];
+
+
+            return Scaffold(
+              backgroundColor: const Color(0xffffffff),
+              body: Center(
+
+                  child: ListView(
                       children: <Widget>[
 
-                        //LOGO
-                        Container(
-                          // margin: EdgeInsets.only(top: 0.0),
-                          width: 259.0,
-                          height: 195.0,
-                          decoration: logo,
-                        ),
+                        //Column a
+                        Column(
+                            children: <Widget>[
+
+                              //LOGO
+                              Container(
+                                // margin: EdgeInsets.only(top: 0.0),
+                                width: 259.0,
+                                height: 195.0,
+                                decoration: logo,
+                              ),
 
 
-                        Container( //boxes c
+                              Container( //boxes c
 
-                          margin: EdgeInsets.all(15.0),
-                          padding: EdgeInsets.all(15.0),
+                                  margin: EdgeInsets.all(15.0),
+                                  padding: EdgeInsets.all(15.0),
 
-                          decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            shape: BoxShape.rectangle,
-                            color: HexColor("#E3F6F6"),
-                          ),
+                                  decoration: new BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    shape: BoxShape.rectangle,
+                                    color: HexColor("#E3F6F6"),
+                                  ),
 
-                            child: WeightChart(
-                              data: data,
-                            )
+                                  child: WeightChart(
+                                    data: data,
+                                    title: "LAST 3 WASTE COLLECTIONS (Kg)"
+                                  )
+                              ),
 
-//                          child: Row( //row d
-//
-//                              children:<Widget> [
-//
-//                               // Column(
-//
-//                                  //  children: <Widget>[
-//
-//
-//                                      WeightChart(data: data),
-//
-//                                      //graph in here
-////                                      new Sparkline(
-////                                        data: [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0],
-////                                        lineColor: Color(0xffff6101),
-////                                        pointsMode: PointsMode.all,
-////                                        pointSize: 8.0,
-////                                      ),
-//
-//                                 //   ]
-//                              //  ),
-//
-//
-//                              ]
-//                          ), //d
-                        ),
+                              //back button
+                              Container( //container so i can set the margin
+                                width: 300.0,
+                                height: 50.0,
+                                margin: const EdgeInsets.only(top: 5.0, bottom: 10),
 
-                        //back button
-                        Container( //container so i can set the margin
-                          width: 300.0,
-                          height: 50.0,
-                          margin: const EdgeInsets.only(top: 5.0, bottom: 10),
+                                child: RaisedButton(
+                                  padding: const EdgeInsets.all(8.0),
+                                  textColor: Colors.black,
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          color: HexColor("#00AAAD"), width: 2),
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: new Text("BACK",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  onPressed: () { Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Home()),
+                                  );},
+                                ),
+                              ),
 
-                          child: RaisedButton(
-                            padding: const EdgeInsets.all(8.0),
-                            textColor: Colors.black,
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    color: HexColor("#00AAAD"), width: 2),
-                                borderRadius: BorderRadius.circular(25)),
-                            child: new Text("BACK",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            onPressed: () { Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                            );},
-                          ),
-                        ),
-
-                        //dataList(),
+                              //dataList(),
+                            ]
+                        )
                       ]
                   )
-                ]
-            )
-        ),
+              ),
 
+            );
+          }
+        else
+          {
+            return Loading();
+          }
+
+
+      }
     );
   }
 }
 
 class WeightChart extends StatelessWidget {
   final List<WeightsSeries> data;
+  final String title;
 
-  WeightChart({@required this.data});
+  WeightChart({@required this.data, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +162,7 @@ class WeightChart extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                "Previous 3 waste collections (Kg)",
+                title,
                 style: Theme.of(context).textTheme.body2,
               ),
               Expanded(

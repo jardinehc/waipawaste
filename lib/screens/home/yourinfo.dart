@@ -41,7 +41,7 @@ class _YourInfoState extends State<YourInfo> {
         stream: DatabaseService(uid: user.uid).userData,
         builder: (context, snapshot) { //snapshot of data coming down the stream
 
-          print(user.uid);
+          //print(user.uid);
           //check theres actually data first
           if (snapshot.hasData) {
 
