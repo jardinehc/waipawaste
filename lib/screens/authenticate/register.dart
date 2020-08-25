@@ -358,7 +358,7 @@ class _RegisterState extends State<Register> {
                               if(_formKey.currentState.validate()) //valid or invalid form
                                 {
                                 setState(() => loading = true);
-                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, userPin);
+                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, userPin, 0, 0, 0);
                                   if(result == null)
                                     {
                                       setState(() => loading = false);
@@ -368,7 +368,7 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                         ),
-                        Container( //container so i can set the margin
+                        Container(
                           width: 300.0,
                           height: 50.0,
                           margin: const EdgeInsets.only(top: 5.0, bottom: 10),

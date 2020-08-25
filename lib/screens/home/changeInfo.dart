@@ -317,7 +317,11 @@ class _changeInfoState extends State<changeInfo> {
                                     _newAddress ?? snapshot.data.address,
                                     _newWasteBin ?? snapshot.data.wasteBin,
                                     _newRecBin ?? snapshot.data.recBin,
-                                    _newUserPin ?? snapshot.data.userPin);
+                                    _newUserPin ?? snapshot.data.userPin,
+                                    snapshot.data.waste1,
+                                  snapshot.data.waste2,
+                                  snapshot.data.waste3
+                                );
                               }
                               Navigator.pop(context);
                             },

@@ -52,14 +52,14 @@ class AuthService {
 
 
   //register w/ email and password
-  Future registerWithEmailAndPassword(String email, String password, String name, String address, String wasteBin, String recBin, int userPin) async
+  Future registerWithEmailAndPassword(String email, String password, String name, String address, String wasteBin, String recBin, int userPin, int waste1, int waste2, int waste3) async
     {
       try {
         AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); //firebase method
         FirebaseUser user = result.user;
 
         //create new document for the new user
-        await DatabaseService(uid: user.uid).updateUserData(name, address, wasteBin, recBin, userPin);
+        await DatabaseService(uid: user.uid).updateUserData(name, address, wasteBin, recBin, userPin, waste1, waste2, waste3);
 
         return _userFromFirebaseUser(user);
       }

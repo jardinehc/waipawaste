@@ -10,7 +10,7 @@ class DatabaseService {
   //final CollectionReference userCollection = Firestore.instance.collection("users");
   final CollectionReference userCollection = Firestore.instance.collection('users');
 
-  Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin) async
+  Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin, int waste1, int waste2, int waste3) async
   {
     return await userCollection.document(uid).setData({
       'name' : name,
@@ -18,6 +18,10 @@ class DatabaseService {
       'wasteBin' : wasteBin,
       'recBin' : recBin,
       'userPin' : userPin,
+
+      'waste1' : waste1,
+      "waste2" : waste2,
+      "waste3" : waste3,
     });
   }
 
