@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/history.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
+import 'package:wdc_login/screens/home/regionalInfo.dart';
 import 'package:wdc_login/screens/home/yourinfo.dart';
 import 'package:wdc_login/screens/tips.dart';
 import 'package:wdc_login/services/auth.dart';
@@ -84,6 +85,10 @@ class Home extends StatelessWidget {
                               style: TextStyle(fontSize: 18),
                             ),
                             onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => regionalInfo()),
+                              );
                             }
                           ),
                         ),
@@ -211,6 +216,8 @@ class Home extends StatelessWidget {
                           ),
                         ),
 
+
+                        //LOGOUT
                         Container(
                           width: 200.0,
                           height: 50.0,

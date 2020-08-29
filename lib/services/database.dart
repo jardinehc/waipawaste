@@ -10,8 +10,12 @@ class DatabaseService {
   //final CollectionReference userCollection = Firestore.instance.collection("users");
   final CollectionReference userCollection = Firestore.instance.collection('users');
 
+  final CollectionReference waipaCollection = Firestore.instance.collection('waipa');
+
+
   Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin, int waste1, int waste2, int waste3) async
   {
+
     return await userCollection.document(uid).setData({
       'name' : name,
       'address' : address,
@@ -58,5 +62,28 @@ Stream<UserData> get userData {
         .map(_userDataFromSnapshot);
 }
 
+
+//for waipa info
+  //waipa data from snapshot
+  WaipaData _waipaDataFromSnapshot(DocumentSnapshot snapshot)
+  {
+    return WaipaData(
+      uid: uid,
+      weight: snapshot.data['weight'],
+    );
+  }
+
+  //get stream
+  Stream<QuerySnapshot> get waipaInfos {
+    return waipaCollection.snapshots();
+  }
+
+  //get user doc stream - listen to data from the user
+  Stream<WaipaData> get waipaData {
+    print("waipa uid from database: ");
+    print(uid);
+    return userCollection.document(uid).snapshots()
+        .map(_waipaDataFromSnapshot);
+  }
 
 }

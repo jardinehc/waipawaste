@@ -31,3 +31,25 @@ class _dataListState extends State<dataList> {
     return Container();
   }
 }
+
+class waipalist extends StatefulWidget {
+  @override
+  _waipalistState createState() => _waipalistState();
+}
+
+class _waipalistState extends State<waipalist> {
+  @override
+  Widget build(BuildContext context) {
+    final waipas = Provider.of<QuerySnapshot>(context);
+    for (var doc in waipas.documents)
+    {
+      //currentU = u.user;
+      print("A DOCUMENT!!!");
+      print(doc.data); //['weight']
+
+
+    }
+    return Container();
+  }
+}
+

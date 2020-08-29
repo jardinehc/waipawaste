@@ -20,3 +20,21 @@ class UserData {
 
   UserData({ this.uid, this.name, this.address, this.wasteBin, this.recBin, this.userPin, this.waste1, this.waste2, this.waste3});
 }
+
+//for waipa data
+
+class WaipaCollection {
+  final String uid;
+
+  WaipaCollection({ this.uid});
+}
+
+class WaipaData {
+
+  final String uid;
+
+  final int weight;
+
+
+  WaipaData({ this.uid, this.weight});
+}

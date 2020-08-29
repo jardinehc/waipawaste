@@ -22,6 +22,12 @@ class HisPage extends StatelessWidget {
 
     User user = Provider.of<User>(context);
 
+    int differnce;
+    bool upward = false;
+    bool downward = false;
+    bool neutral = false;
+    bool noResults = true;
+
     return StreamBuilder<UserData>(
       stream: DatabaseService(uid: user.uid).userData,
       builder: (context, snapshot) {
@@ -48,6 +54,24 @@ class HisPage extends StatelessWidget {
               ),
             ];
 
+            differnce = userData.waste1 - userData.waste2;
+
+            if(userData.waste2 != 0)
+              {
+                noResults = false;
+              }
+            if(differnce > 0 && !noResults)
+              {
+                upward = true;
+              }
+            else if(differnce < 0 && !noResults)
+              {
+                downward = true;
+              }
+            else if(!noResults)
+              {
+                neutral = true;
+              }
 
             return Scaffold(
               backgroundColor: const Color(0xffffffff),
@@ -84,6 +108,18 @@ class HisPage extends StatelessWidget {
                                     data: data,
                                     title: "LAST 3 WASTE COLLECTIONS (Kg)"
                                   )
+                              ),
+
+                              //image or message depending on user info
+                              Container(
+                                //if no collections then a message
+
+                                //if trending upward then a :(
+
+                                //if same then a meutral face
+
+                                //if trending downward then a :)
+
                               ),
 
                               //back button
