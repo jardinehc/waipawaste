@@ -26,33 +26,45 @@ class regionalInfo extends StatelessWidget {
 
    // final waipas = Provider.of<QuerySnapshot>(context);
 
-     return StreamProvider<QuerySnapshot>.value(
+     return StreamProvider<List<WaipaData>>.value(
        value: DatabaseService().waipaInfos,
 
 
            child:
            Scaffold(
-             body: waipalist(),
-//             Container(
-//                 width: 300.0,
-//                 height: 50.0,
-//                 margin: const EdgeInsets.only(top: 20.0),
+             body: Center(
+
+                 child: ListView(
+                   children: <Widget>[
+
+                    Container(
+                     width: 300.0,
+                     height: 50.0,
+                     margin: const EdgeInsets.only(top: 20.0),
+
+                     child:
+                     RaisedButton(
+                       padding: const EdgeInsets.all(8.0),
+                       textColor: Colors.white,
+                       color: HexColor("#00AAAD"), //get actual colour
+                       shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5)),
+                       child: new Text("HELLO",
+                         style: TextStyle(fontSize: 18),
+                       ),
+                       onPressed: () { },
+                     ),
+                   ),
+                     waipalist(),
+                  ]
+                 ),
+
+               ),
+
+             ),
 //
-//                 child:
-//                 RaisedButton(
-//                   padding: const EdgeInsets.all(8.0),
-//                   textColor: Colors.white,
-//                   color: HexColor("#00AAAD"), //get actual colour
-//                   shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(5)),
-//                   child: new Text("HELLO",
-//                     style: TextStyle(fontSize: 18),
-//                   ),
-//                   onPressed: () { },
-//                 ),
-//               ),
-           ),
-       );
+           );
+      // );
    //  );
   }
 }

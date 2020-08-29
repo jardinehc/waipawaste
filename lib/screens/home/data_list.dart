@@ -40,15 +40,17 @@ class waipalist extends StatefulWidget {
 class _waipalistState extends State<waipalist> {
   @override
   Widget build(BuildContext context) {
-    final waipas = Provider.of<QuerySnapshot>(context);
-    for (var doc in waipas.documents)
-    {
-      //currentU = u.user;
-      print("A DOCUMENT!!!");
-      print(doc.data); //['weight']
 
+    final waipas = Provider.of<List<WaipaData>>(context);
+    waipas.forEach((waipa) {
+      print(waipa.weight);
+    });
 
-    }
+//    final waipas = Provider.of<QuerySnapshot>(context);
+//    for (var doc in waipas.documents)
+//    {
+//      print(doc.data); //['weight']
+//    }
     return Container();
   }
 }

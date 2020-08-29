@@ -63,27 +63,30 @@ Stream<UserData> get userData {
 }
 
 
+
 //for waipa info
+
   //waipa data from snapshot
-  WaipaData _waipaDataFromSnapshot(DocumentSnapshot snapshot)
+  List<WaipaData> _waipaDataFromSnapshot(QuerySnapshot snapshot)
   {
-    return WaipaData(
-      uid: uid,
-      weight: snapshot.data['weight'],
-    );
+    return snapshot.documents.map((doc) {
+      return WaipaData(
+        weight: doc.data['weight'] ?? 0,
+      );
+    }).toList();
   }
 
   //get stream
-  Stream<QuerySnapshot> get waipaInfos {
-    return waipaCollection.snapshots();
+  Stream<List<WaipaData>> get waipaInfos {
+    return waipaCollection.snapshots().map(_waipaDataFromSnapshot);
   }
 
-  //get user doc stream - listen to data from the user
-  Stream<WaipaData> get waipaData {
-    print("waipa uid from database: ");
-    print(uid);
-    return userCollection.document(uid).snapshots()
-        .map(_waipaDataFromSnapshot);
-  }
+//  //get user doc stream - listen to data from the user
+//  Stream<List<WaipaData>> get waipaData {
+//    print("waipa uid from database: ");
+//    print(uid);
+//    return userCollection.document(uid).snapshots()
+//        .map(_waipaDataFromSnapshot);
+//  }
 
 }
