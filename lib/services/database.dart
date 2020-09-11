@@ -56,8 +56,8 @@ class DatabaseService {
 
   //get user doc stream - listen to data from the user
 Stream<UserData> get userData {
-    print("users uid from database: ");
-    print(uid);
+    //print("users uid from database: ");
+    //print(uid);
     return userCollection.document(uid).snapshots()
         .map(_userDataFromSnapshot);
 }
@@ -66,27 +66,47 @@ Stream<UserData> get userData {
 
 //for waipa info
 
+  //as per lesson 20
+
   //waipa data from snapshot
-  List<WaipaData> _waipaDataFromSnapshot(QuerySnapshot snapshot)
+  List<Waipa> _waipaDataFromSnapshot(QuerySnapshot snapshot)
   {
     return snapshot.documents.map((doc) {
-      return WaipaData(
+      return Waipa(
         weight: doc.data['weight'] ?? 0,
+        date: doc.data['date'] ?? 0,
       );
     }).toList();
   }
 
-  //get stream
-  Stream<List<WaipaData>> get waipaInfos {
+  //get stream L20
+/*  Stream<List<Waipa>> get waipas {
     return waipaCollection.snapshots().map(_waipaDataFromSnapshot);
+  }*/
+
+  Stream<QuerySnapshot> get waipas {
+    return waipaCollection.snapshots();
   }
 
-//  //get user doc stream - listen to data from the user
-//  Stream<List<WaipaData>> get waipaData {
-//    print("waipa uid from database: ");
-//    print(uid);
-//    return userCollection.document(uid).snapshots()
-//        .map(_waipaDataFromSnapshot);
-//  }
+
+
+  //replicating that from user
+/*  WaipaData _waipaDataFromSnapshot2(DocumentSnapshot snapshot)
+  {
+    return WaipaData(
+        uid: uid,
+        weight: snapshot.data['weight'],
+        date: snapshot.data['date'],
+    );
+  }*/
+
+
+  //get user doc stream - listen to data from the user
+/*  Stream<WaipaData> get waipaData {
+    //print("users uid from database: ");
+    //print(uid);
+    return waipaCollection.document().snapshots()
+        .map(_waipaDataFromSnapshot2);
+  }*/
 
 }

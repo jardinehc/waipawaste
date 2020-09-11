@@ -17,6 +17,10 @@ import 'home.dart';
 class HisPage extends StatelessWidget {
   //https://www.digitalocean.com/community/tutorials/flutter-bar-charts
 
+  static int weight3;
+  static int weight2;
+  static int weight1;
+
   @override
   Widget build(BuildContext context) {
 
@@ -28,6 +32,7 @@ class HisPage extends StatelessWidget {
     bool neutral = false;
     bool noResults = true;
 
+
     return StreamBuilder<UserData>(
       stream: DatabaseService(uid: user.uid).userData,
       builder: (context, snapshot) {
@@ -36,10 +41,14 @@ class HisPage extends StatelessWidget {
           {
             UserData userData = snapshot.data;
 
+            weight3 = userData.waste3;
+            weight2 = userData.waste2;
+            weight1 = userData.waste1;
+
             final List<WeightsSeries> data = [
               WeightsSeries(
                 date: "3 AGO",
-                weight: userData.waste3,
+                weight: weight3, // userData.waste3,
                 barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
               ),
               WeightsSeries(

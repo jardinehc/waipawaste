@@ -23,10 +23,11 @@ class UserData {
 
 //for waipa data
 
-class WaipaCollection {
-  final String uid;
+class Waipa {
+  final int weight;
+  final int date;
 
-  WaipaCollection({ this.uid});
+  Waipa({ this.weight, this.date});
 }
 
 class WaipaData {
@@ -35,6 +36,8 @@ class WaipaData {
 
   final int weight;
 
+  final int date;
 
-  WaipaData({ this.uid, this.weight});
+
+  WaipaData({ this.uid, this.weight, this.date});
 }
