@@ -61,8 +61,23 @@ class _waipalistState1 extends State<waipalist1> {
     int userWeight2 = HisPage.weight2;
     int userWeight1 = HisPage.weight1;
 
-    //this is from lesson 18
+    List<int> weight1List = new List();
+    List<int> weight2List = new List();
+    List<int> weight3List = new List();
 
+    int total1 = 0;
+    int total2 = 0;
+    int total3 = 0;
+
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+
+    int avgWeight1 = 0;
+    int avgWeight2 = 0;
+    int avgWeight3 = 0;
+
+    //this is from lesson 18
     final waipaData = Provider.of<QuerySnapshot>(context);
     for (var doc in waipaData.documents)
     {
@@ -70,14 +85,17 @@ class _waipalistState1 extends State<waipalist1> {
       if(doc.data['date'] == 1)
         {
           weight1 = doc.data['weight'];
+          weight1List.add(weight1);
         }
        else if(doc.data['date'] == 2)
         {
           weight2 = doc.data['weight'];
+          weight2List.add(weight2);
         }
       else
         {
           weight3 = doc.data['weight'];
+          weight3List.add(weight3);
         }
 
       print("weight 1: $weight1");
@@ -85,6 +103,32 @@ class _waipalistState1 extends State<waipalist1> {
       print("weight 3: $weight3");
 
     }
+
+    //find averages for each time period
+
+    //weight 1
+      for(int i in weight1List)
+      {
+        total1 += i;
+        count1 ++;
+      }
+      avgWeight1 = total1 ~/ count1;
+
+      //weight 2
+    for(int i in weight2List)
+    {
+      total2 += i;
+      count2 ++;
+    }
+    avgWeight2 = total2 ~/ count2;
+
+    //weight 3
+    for(int i in weight3List)
+    {
+      total3 += i;
+      count3 ++;
+    }
+    avgWeight3 = total3 ~/ count3;
 
     //here i will add the charts!!! this is what is displayed on the screen
     return Center(
@@ -137,17 +181,17 @@ class _waipalistState1 extends State<waipalist1> {
                           [
                             WeightsSeries(
                               date: "3 AGO",
-                              weight: weight3, // userData.waste3,
+                              weight: avgWeight3, // userData.waste3,
                               barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "2 AGO",
-                              weight: weight2,
+                              weight: avgWeight2,
                               barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "LAST ",
-                              weight: weight1,
+                              weight: avgWeight1,
                               barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             )],
                           title: "LAST 3 WASTE COLLECTIONS (Kg)"
