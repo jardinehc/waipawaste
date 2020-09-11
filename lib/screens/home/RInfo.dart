@@ -21,6 +21,7 @@ class RInfo extends StatelessWidget {
     return StreamProvider<QuerySnapshot>.value(
       value: DatabaseService().waipas,
       child: Scaffold(
+        backgroundColor: const Color(0xffffffff),
         body: waipalist1(),
       ),
     );
@@ -32,17 +33,6 @@ class waipalist1 extends StatefulWidget {
 
   @override
   _waipalistState1 createState() => _waipalistState1();
-  //waipalistState1 wp = new waipalistState1();
-
-  static int pleasebethere = 90;
-
-
-/*
-  int weightOne = _waipalistState1.weight1;
-  int weightTwo = _waipalistState1.weight2;
-  int weightThree;
-*/
-
 }
 
 class _waipalistState1 extends State<waipalist1> {
@@ -53,7 +43,7 @@ class _waipalistState1 extends State<waipalist1> {
   static int weight2;
   static int weight3;
 
-  // it can get that 99 but isnt running the build thingng
+
   @override
   Widget build(BuildContext context) {
 
@@ -130,7 +120,7 @@ class _waipalistState1 extends State<waipalist1> {
     }
     avgWeight3 = total3 ~/ count3;
 
-    //here i will add the charts!!! this is what is displayed on the screen
+    //this is what is displayed on the screen
     return Center(
       child: ListView(
           children: <Widget>[
@@ -146,6 +136,72 @@ class _waipalistState1 extends State<waipalist1> {
                     height: 195.0,
                     decoration: logo,
                   ),
+
+                 Row(
+                      children: <Widget>[
+
+                        Container( //user colour box
+
+                          width: 40,
+                          height: 25,
+                          //margin: EdgeInsets.all(5.0),
+                          margin: EdgeInsets.only(
+                              left: 15.0),
+                          decoration:BoxDecoration (
+                              shape: BoxShape.rectangle,
+                              color: Colors.black,
+                          )
+                        ),
+
+                        Container( //name box
+
+                          width: 150,
+                          height: 50,
+                          //margin: EdgeInsets.all(5.0),
+                          /*margin: EdgeInsets.only(
+                              left: 2.0)*/
+                          child: Center(
+                            child: Text(
+                              '= your last 3 \ncollections',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+
+                        Container( //colour box
+
+                          width: 40,
+                          height: 25,
+                          //margin: EdgeInsets.all(5.0),
+                          margin: EdgeInsets.only(
+                              left: 10.0),
+                          decoration: boxDecoration,
+                        ),
+
+                        Container( //text box waipa
+
+                          width: 150,
+                          height: 50,
+                          //margin: EdgeInsets.all(5.0),
+                          /*margin: EdgeInsets.only(
+                              bottom: 5.0, left: 5.0),*/
+                          child: Center(
+                            child: Text(
+                              '= average of similar households',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+
 
 
                   Container( //boxes c
