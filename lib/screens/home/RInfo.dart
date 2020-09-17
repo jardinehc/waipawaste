@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -67,30 +68,59 @@ class _waipalistState1 extends State<waipalist1> {
     int avgWeight2 = 0;
     int avgWeight3 = 0;
 
+    DateTime collectionDate = null;
+    final today = DateTime.now();
+    int collectionWeek = 0;
+
     //this is from lesson 18
     final waipaData = Provider.of<QuerySnapshot>(context);
     for (var doc in waipaData.documents)
     {
+      if(doc.data['date'] != null)
+        {
+            /*collectionDate = DateTime.parse(doc.data['dateTime']);
+            int difference = collectionDate.difference(today).inDays;
+            print("difference $difference");*/
 
-      if(doc.data['date'] == 1)
-        {
-          weight1 = doc.data['weight'];
-          weight1List.add(weight1);
-        }
-       else if(doc.data['date'] == 2)
-        {
-          weight2 = doc.data['weight'];
-          weight2List.add(weight2);
-        }
-      else
-        {
-          weight3 = doc.data['weight'];
-          weight3List.add(weight3);
-        }
+            collectionWeek = doc.data['date'];
 
-      print("weight 1: $weight1");
+            //get the current week of the year
+            int weekNumber(DateTime date) {
+              int dayOfYear = int.parse(DateFormat("D").format(date));
+              return ((dayOfYear - date.weekday + 10) / 7).floor();
+            }
+            print(weekNumber(today));
+
+            int difference = weekNumber(today) - collectionWeek;
+            print("difference $difference");
+
+            if(difference < 0 )
+              {
+                difference = 52 + difference;
+              }
+
+            //if(doc.data['date'] == 1)
+            if(difference == 1)
+            {
+              weight1 = doc.data['weight'];
+              weight1List.add(weight1);
+            }
+           // else if(doc.data['date'] == 2)
+            else if(difference == 2)
+            {
+              weight2 = doc.data['weight'];
+              weight2List.add(weight2);
+            }
+            else
+            {
+              weight3 = doc.data['weight'];
+              weight3List.add(weight3);
+            }
+
+        }
+/*      print("weight 1: $weight1");
       print("weight 2: $weight2");
-      print("weight 3: $weight3");
+      print("weight 3: $weight3");*/
 
     }
 
@@ -102,7 +132,10 @@ class _waipalistState1 extends State<waipalist1> {
         total1 += i;
         count1 ++;
       }
-      avgWeight1 = total1 ~/ count1;
+      if(total1 != 0)
+      {
+        avgWeight1 = total1 ~/ count1;
+       }
 
       //weight 2
     for(int i in weight2List)
@@ -110,7 +143,10 @@ class _waipalistState1 extends State<waipalist1> {
       total2 += i;
       count2 ++;
     }
+    if(total2 != 0)
+    {
     avgWeight2 = total2 ~/ count2;
+    }
 
     //weight 3
     for(int i in weight3List)
@@ -162,7 +198,7 @@ class _waipalistState1 extends State<waipalist1> {
                               left: 2.0)*/
                           child: Center(
                             child: Text(
-                              '= your last 3 \ncollections',
+                              '= your last 3 waste\ncollections',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),

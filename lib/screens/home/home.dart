@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/RInfo.dart';
+import 'package:wdc_login/screens/home/help.dart';
 import 'package:wdc_login/screens/home/history.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
 import 'package:wdc_login/screens/home/regionalInfo.dart';
@@ -8,6 +9,7 @@ import 'package:wdc_login/screens/home/yourinfo.dart';
 import 'package:wdc_login/screens/tips.dart';
 import 'package:wdc_login/services/auth.dart';
 import 'package:wdc_login/services/database.dart';
+import 'package:wdc_login/shared/constants.dart';
 
 class Home extends StatelessWidget {
 
@@ -37,12 +39,7 @@ class Home extends StatelessWidget {
                           // margin: EdgeInsets.only(top: 0.0),
                           width: 259.0,
                           height: 195.0,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: const AssetImage('assests/images/logo.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                         decoration: logo,
                         ), //end of logo container
 
                         //buttons: c
@@ -161,10 +158,10 @@ class Home extends StatelessWidget {
                               style: TextStyle(fontSize: 18),
                             ),
                             onPressed: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(builder: (context) => GooglePixel3XL2()),
-//                              );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Help()),
+                              );
                             },
                           ),
                         ),

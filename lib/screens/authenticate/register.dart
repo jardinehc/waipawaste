@@ -259,7 +259,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for address
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration,
@@ -277,7 +277,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for user pin
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration,
@@ -296,7 +296,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for waste bin
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration, //the page/class
