@@ -211,6 +211,7 @@ class _changeInfoState extends State<changeInfo> {
                                       decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
+                                        fontSize: 14,
                                       ),
                                       onChanged: (val) {
                                         setState(() => _newAddress = val);

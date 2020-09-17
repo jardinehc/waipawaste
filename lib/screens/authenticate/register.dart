@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/services/auth.dart';
 import 'package:wdc_login/shared/constants.dart';
@@ -29,6 +32,8 @@ class _RegisterState extends State<Register> {
   String wasteBin = "";
   String recBin = "";
   int userPin = null;
+
+  var txt = TextEditingController();
 
 
   @override
@@ -261,14 +266,44 @@ class _RegisterState extends State<Register> {
 
                                     //start of text field for address
                                     child: new TextFormField(
+
+                                      onTap: ()async{ //for autocomplete
+                                        Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "AIzaSyCPVTCLkVO5gHEL7ktu8ozJh5rFwkuSK9E",
+                                            mode: Mode.overlay,
+                                            language: "en", components: [
+                                          Component(Component.country, "nz")
+                                            ]);
+                                        //if an option is selected
+                                        if(p != null)
+                                          {
+                                            print("NOT NULL");
+                                            address = p.description;
+                                            print(address);
+                                            txt.text = address;
+                                            controller: txt;
+                                          }
+                                      },
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: textInputDecoration,
+                                      controller: txt,
+                                      decoration: InputDecoration(
+                                        //labelText: address,
+                                          fillColor: Colors.white,
+                                          enabledBorder:  OutlineInputBorder(
+                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
+                                          )
+                                      ),
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
+                                        fontSize: 14,
+                                        //fontWeight: FontWeight.bold,
                                       ),
-                                      onChanged: (val) {
+                                 /*     onChanged: (val)  {
                                         setState(() => address = val);
-                                      },
+                                        //print(address);
+                                      },*/
                                     ),
                                   ), //text box
 
