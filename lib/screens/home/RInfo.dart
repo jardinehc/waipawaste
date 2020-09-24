@@ -89,10 +89,10 @@ class _waipalistState1 extends State<waipalist1> {
               int dayOfYear = int.parse(DateFormat("D").format(date));
               return ((dayOfYear - date.weekday + 10) / 7).floor();
             }
-            print(weekNumber(today));
+            //print(weekNumber(today));
 
             int difference = weekNumber(today) - collectionWeek;
-            print("difference $difference");
+            //print("difference $difference");
 
             if(difference < 0 )
               {
@@ -135,7 +135,7 @@ class _waipalistState1 extends State<waipalist1> {
       if(total1 != 0)
       {
         avgWeight1 = total1 ~/ count1;
-       }
+      }
 
       //weight 2
     for(int i in weight2List)
@@ -255,36 +255,36 @@ class _waipalistState1 extends State<waipalist1> {
                           data:  [
                             WeightsSeries(
                               date: "3 AGO",
-                              weight: userWeight3, // userData.waste3,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              weight: userWeight3,
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "2 AGO",
                               weight: userWeight2,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "LAST ",
                               weight: userWeight1,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                           ],
                           dataWaipa:
                           [
                             WeightsSeries(
                               date: "3 AGO",
-                              weight: avgWeight3, // userData.waste3,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              weight: avgWeight3,
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             ),
                             WeightsSeries(
                               date: "2 AGO",
                               weight: avgWeight2,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             ),
                             WeightsSeries(
                               date: "LAST ",
                               weight: avgWeight1,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             )],
                           title: "LAST 3 WASTE COLLECTIONS (Kg)"
                       )

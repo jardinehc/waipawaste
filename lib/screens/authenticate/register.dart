@@ -280,7 +280,7 @@ class _RegisterState extends State<Register> {
                                             address = p.description;
                                             print(address);
                                             txt.text = address;
-                                            controller: txt;
+                                          //  controller: txt;
                                           }
                                       },
                                       textAlignVertical: TextAlignVertical.center,
@@ -297,7 +297,7 @@ class _RegisterState extends State<Register> {
                                       ),
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
-                                        fontSize: 14,
+                                        fontSize: 10, //14
                                         //fontWeight: FontWeight.bold,
                                       ),
                                  /*     onChanged: (val)  {

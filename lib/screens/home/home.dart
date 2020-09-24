@@ -57,12 +57,12 @@ class Home extends StatelessWidget {
                             color: HexColor("#00AAAD"), //get actual colour
                             //shape: RoundedRectangleBorder(
                             //  borderRadius: BorderRadius.circular(25)),
-                            child: new Text("YOUR INFORMATION",
+                            child: new Text("PAST COLLECTIONS",
                               style: TextStyle(fontSize: 18),
                             ),
                             onPressed: () { Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => YourInfo()),
+                              MaterialPageRoute(builder: (context) => HisPage()),
                             );
                             },
                           ),
@@ -104,7 +104,7 @@ class Home extends StatelessWidget {
                             color: HexColor("#00AAAD"), //get actual colour
                             //shape: RoundedRectangleBorder(
                             //  borderRadius: BorderRadius.circular(25)),
-                            child: new Text("HELPFUL TIPS",
+                            child: new Text("NOTIFICATIONS",
                               style: TextStyle(fontSize: 18, color: Colors.white),
                             ),
                             onPressed: () {
@@ -129,13 +129,13 @@ class Home extends StatelessWidget {
                             color: HexColor("#00AAAD"), //get actual colour
                             //shape: RoundedRectangleBorder(
                             //  borderRadius: BorderRadius.circular(25)),
-                            child: new Text("HISTORY",
+                            child: new Text("SETTINGS",
                               style: TextStyle(fontSize: 18),
                             ),
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => HisPage()),
+                                MaterialPageRoute(builder: (context) => YourInfo()),
                               );
                             },
                           ),

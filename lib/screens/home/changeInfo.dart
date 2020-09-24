@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
 import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
@@ -27,6 +29,7 @@ class _changeInfoState extends State<changeInfo> {
   String _newRecBin;
   int _newUserPin;
 
+  var txt = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,8 @@ class _changeInfoState extends State<changeInfo> {
 
     if (snapshot.hasData) {
       UserData userData = snapshot.data;
+
+      txt.text = userData.address;
 
       return Scaffold(
           backgroundColor: const Color(0xffffffff),
@@ -197,6 +202,7 @@ class _changeInfoState extends State<changeInfo> {
                                     ),
                                   ), //text box
 
+                                  //text box for address
                                   Container(
                                     width: 300,
                                     height: 50,
@@ -205,8 +211,45 @@ class _changeInfoState extends State<changeInfo> {
 
                                     //start of text field for address
                                     child: new TextFormField(
-                                      initialValue: userData.address,
-                                      textAlignVertical: TextAlignVertical
+                                     // initialValue: userData.address,
+                                    onTap: ()async{
+                                      Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "AIzaSyCPVTCLkVO5gHEL7ktu8ozJh5rFwkuSK9E",
+                                          mode: Mode.overlay,
+                                          language: "en", components: [
+                                            Component(Component.country, "nz")
+                                          ]);
+
+                                      //if an option is selected
+                                      if(p != null)
+                                      {
+                                        print("NOT NULL");
+                                        _newAddress = p.description;
+                                        print(_newAddress);
+                                        txt.text = _newAddress;
+                                        //  controller: txt;
+                                      }
+                                    },
+                                      textAlignVertical: TextAlignVertical.center,
+                                      controller: txt,
+                                      decoration: InputDecoration(
+                                        //labelText: address,
+                                          fillColor: Colors.white,
+                                          enabledBorder:  OutlineInputBorder(
+                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
+                                          )
+                                      ),
+                                      style: new TextStyle(
+                                        fontFamily: "Poppins",
+                                        fontSize: 10, //14
+                                        //fontWeight: FontWeight.bold,
+                                      ),
+
+
+                                    /*  initialValue: userData.address,
+                                    textAlignVertical: TextAlignVertical
                                           .center,
                                       decoration: textInputDecoration,
                                       style: new TextStyle(
@@ -215,7 +258,7 @@ class _changeInfoState extends State<changeInfo> {
                                       ),
                                       onChanged: (val) {
                                         setState(() => _newAddress = val);
-                                      },
+                                      },*/
                                     ),
                                   ), //text box
 
