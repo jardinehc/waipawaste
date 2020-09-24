@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/shared/constants.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'home.dart';
 
 class Contact extends StatefulWidget {
@@ -212,8 +212,7 @@ class _ContactState extends State<Contact> {
                         child: new Text("SEND",
                           style: TextStyle(fontSize: 18),
                         ),
-                        onPressed: () async {
-                        },
+                        onPressed: () => _launchURL('jardine.chapman@gmail.com', 'Query from Waipa Waste from $name', "$message reply email: $email"),
                       ),
                     ),
 
@@ -246,4 +245,15 @@ class _ContactState extends State<Contact> {
     );
 
   }
+
+  _launchURL(String toMailId, String subject, String body) async {
+    var url = 'mailto:$toMailId?subject=$subject&body=$body';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
+
+

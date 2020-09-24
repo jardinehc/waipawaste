@@ -192,6 +192,7 @@ class _SignInState extends State<SignIn> {
                       },
                     ),
                   ),
+                  Container(height: 10)
                 ],
               ),
             ),
