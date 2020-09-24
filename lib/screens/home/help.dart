@@ -5,8 +5,13 @@ import 'package:wdc_login/screens/home/home.dart';
 import 'package:wdc_login/shared/constants.dart';
 
 class Help extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
+    String message;
+    String name;
+    String email;
 
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
@@ -31,6 +36,7 @@ class Help extends StatelessWidget {
           //    children: <Widget>[
             margin: EdgeInsets.all(15.0),
             padding: EdgeInsets.all(15.0),
+           // height: 100,
 
             decoration: new BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
@@ -43,15 +49,18 @@ class Help extends StatelessWidget {
               children:<Widget> [
 
             new Text(
-                  '\nChange your details if anything has changed,\nyou have moved or recieved new bins',
+                  'Thank you for taking the time to test out this\napplication.'
+                      ' If you have any comments or suggestions \nI would love to receive them.'
+                      ' Please use the contact\nform below or alternatively email Jardine at\njardine.chapman@gmail.com',
                   //textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.black),
                 ),
 
 
-          ]  ),
-      //  ]
+            ]
+            ),
       ),
+
 
            Container( //container so i can set the margin
              width: 300.0,
@@ -81,4 +90,5 @@ class Help extends StatelessWidget {
     ),
     );
   }
+
 }

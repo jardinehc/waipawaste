@@ -231,19 +231,10 @@ class _changeInfoState extends State<changeInfo> {
                                     },
                                       textAlignVertical: TextAlignVertical.center,
                                       controller: txt,
-                                      decoration: InputDecoration(
-                                        //labelText: address,
-                                          fillColor: Colors.white,
-                                          enabledBorder:  OutlineInputBorder(
-                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
-                                          )
-                                      ),
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
-                                        fontSize: 10, //14
+                                        fontSize: 14,
                                         //fontWeight: FontWeight.bold,
                                       ),
 

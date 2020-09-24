@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/RInfo.dart';
+import 'package:wdc_login/screens/home/contact.dart';
 import 'package:wdc_login/screens/home/help.dart';
 import 'package:wdc_login/screens/home/history.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
@@ -160,7 +161,7 @@ class Home extends StatelessWidget {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Help()),
+                                MaterialPageRoute(builder: (context) => Contact()),
                               );
                             },
                           ),

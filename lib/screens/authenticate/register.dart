@@ -285,7 +285,8 @@ class _RegisterState extends State<Register> {
                                       },
                                       textAlignVertical: TextAlignVertical.center,
                                       controller: txt,
-                                      decoration: InputDecoration(
+                                      decoration: textInputDecoration,
+                                  /*    decoration: InputDecoration(
                                         //labelText: address,
                                           fillColor: Colors.white,
                                           enabledBorder:  OutlineInputBorder(
@@ -294,10 +295,10 @@ class _RegisterState extends State<Register> {
                                           focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
                                           )
-                                      ),
+                                      ),*/
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
-                                        fontSize: 10, //14
+                                        fontSize: 14, //14
                                         //fontWeight: FontWeight.bold,
                                       ),
                                  /*     onChanged: (val)  {

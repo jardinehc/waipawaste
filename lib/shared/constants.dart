@@ -8,7 +8,12 @@ const textInputDecoration = InputDecoration(
   ),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
-  )
+  ),
+    contentPadding:
+    const EdgeInsets.only(
+    left: 8.0,
+    bottom: 8.0,
+    top: 8.0)
 );
 
 
