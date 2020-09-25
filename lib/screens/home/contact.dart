@@ -14,7 +14,7 @@ class Contact extends StatefulWidget {
 
 class _ContactState extends State<Contact> {
 
-  String message = "BOO";
+  String message = "";
   String name = "";
   String email= "";
 
@@ -217,21 +217,21 @@ class _ContactState extends State<Contact> {
                           style: TextStyle(fontSize: 18),
                         ),
                           onPressed: () {
-                          //add message and details to firebase
-                          Firestore.instance.collection('contacts').document().setData(
+                          //add message and details to firebase if they have included a message
+                            if(message != "") {
+                              Firestore.instance.collection('contacts').document().setData(
+                                  {
+                                    'name': name,
+                                    'email': email,
+                                    'message': message
+                                  } );
+                              _showDialog(context, false);
+                            }
+                            else
                               {
-                                'name': name,
-                                'email': email,
-                                'message': message
-                              } );
-
-                          _showDialog(context);
-                          //navigate back home
-                       /*   Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()));*/
+                                _showDialog(context, true);
+                              }
                           }
-                        //onPressed: () => _launchURL('jardine.chapman@gmail.com', 'Query from Waipa Waste from $name', "$message reply email: $email"),
                       ),
                     ),
 
@@ -266,15 +266,24 @@ class _ContactState extends State<Contact> {
 
   }
 
-  _showDialog(BuildContext context)
+  _showDialog(BuildContext context, bool isError)
   {
+    String alertTitle = "Thank You $name";
+    String alertMessage = "Message has successfully sent";
 
     VoidCallback continueCallBack = () => {
       Navigator.of(context).pop(),
       // code on continue comes here
-
     };
-    BlurryDialog  alert = BlurryDialog("Thank You","Message has successfully sent",continueCallBack);
+
+    if(isError)
+      {
+        alertTitle = "Error";
+        alertMessage = "Please enter a message and try again";
+      }
+
+
+    BlurryDialog  alert = BlurryDialog(alertTitle,alertMessage,continueCallBack, isError);
 
 
     showDialog(
@@ -284,15 +293,6 @@ class _ContactState extends State<Contact> {
       },
     );
   }
-
-/*  _launchURL(String toMailId, String subject, String body) async {
-    var url = 'mailto:$toMailId?subject=$subject&body=$body';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }*/
 }
 
 
