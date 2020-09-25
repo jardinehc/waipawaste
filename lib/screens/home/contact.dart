@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
+import 'package:wdc_login/services/dialog.dart';
 import 'package:wdc_login/shared/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'home.dart';
@@ -224,10 +225,11 @@ class _ContactState extends State<Contact> {
                                 'message': message
                               } );
 
+                          _showDialog(context);
                           //navigate back home
-                          Navigator.push(
+                       /*   Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                              MaterialPageRoute(builder: (context) => Home()));*/
                           }
                         //onPressed: () => _launchURL('jardine.chapman@gmail.com', 'Query from Waipa Waste from $name', "$message reply email: $email"),
                       ),
@@ -262,6 +264,25 @@ class _ContactState extends State<Contact> {
       ),
     );
 
+  }
+
+  _showDialog(BuildContext context)
+  {
+
+    VoidCallback continueCallBack = () => {
+      Navigator.of(context).pop(),
+      // code on continue comes here
+
+    };
+    BlurryDialog  alert = BlurryDialog("Thank You","Message has successfully sent",continueCallBack);
+
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 /*  _launchURL(String toMailId, String subject, String body) async {
