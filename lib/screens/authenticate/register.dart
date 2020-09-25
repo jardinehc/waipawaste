@@ -430,11 +430,6 @@ class _RegisterState extends State<Register> {
                 ) //a column
               ], //listview widget
             )  //makes it scrollable
-
-
-
-
-
         )
     );
 

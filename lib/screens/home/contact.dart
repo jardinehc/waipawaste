@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
@@ -11,12 +12,13 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+
+  String message = "BOO";
+  String name = "";
+  String email= "";
+
   @override
   Widget build(BuildContext context) {
-
-    String message;
-    String name;
-    String email;
 
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
@@ -164,7 +166,8 @@ class _ContactState extends State<Contact> {
                                   ),
                                   validator: (val) => val.isEmpty ? 'Enter an email' : null,
                                   onChanged: (val) {
-                                    setState(() => email = val);
+                                    email = val;
+                                   // setState(() => email = val);
                                   },
                                 ),
                               ), //text box
@@ -198,9 +201,9 @@ class _ContactState extends State<Contact> {
                     SizedBox(height: 12.0),
                     //button: h
                     Container(
-                      width: 300.0,
+                      width: double.infinity,
                       height: 50.0,
-                      margin: const EdgeInsets.only(top: 20.0),
+                      margin: const EdgeInsets.only(top: 20, left: 50, right: 50),
 
                       child:
                       RaisedButton(
@@ -212,14 +215,29 @@ class _ContactState extends State<Contact> {
                         child: new Text("SEND",
                           style: TextStyle(fontSize: 18),
                         ),
-                        onPressed: () => _launchURL('jardine.chapman@gmail.com', 'Query from Waipa Waste from $name', "$message reply email: $email"),
+                          onPressed: () {
+                          //add message and details to firebase
+                          Firestore.instance.collection('contacts').document().setData(
+                              {
+                                'name': name,
+                                'email': email,
+                                'message': message
+                              } );
+
+                          //navigate back home
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home()));
+                          }
+                        //onPressed: () => _launchURL('jardine.chapman@gmail.com', 'Query from Waipa Waste from $name', "$message reply email: $email"),
                       ),
                     ),
 
                     Container( //container so i can set the margin
-                      width: 300.0,
+                      width: double.infinity,
+                      //width: 300.0,
                       height: 50.0,
-                      margin: const EdgeInsets.only(top: 5.0, bottom: 10),
+                      margin: const EdgeInsets.only(top: 5.0, bottom: 10, left: 50, right: 50),
 
                       child: RaisedButton(
                         padding: const EdgeInsets.all(8.0),
@@ -246,14 +264,14 @@ class _ContactState extends State<Contact> {
 
   }
 
-  _launchURL(String toMailId, String subject, String body) async {
+/*  _launchURL(String toMailId, String subject, String body) async {
     var url = 'mailto:$toMailId?subject=$subject&body=$body';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
-  }
+  }*/
 }
 
 

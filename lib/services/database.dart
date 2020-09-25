@@ -12,6 +12,8 @@ class DatabaseService {
 
   final CollectionReference waipaCollection = Firestore.instance.collection('waipa');
 
+  final CollectionReference contactCollection = Firestore.instance.collection("contacts");
+
 
   Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin, int waste1, int waste2, int waste3) async
   {
@@ -28,6 +30,7 @@ class DatabaseService {
       "waste3" : waste3,
     });
   }
+
 
 
 
@@ -86,6 +89,10 @@ Stream<UserData> get userData {
 
   Stream<QuerySnapshot> get waipas {
     return waipaCollection.snapshots();
+  }
+
+  Stream<QuerySnapshot> get contacts {
+    return contactCollection.snapshots();
   }
 
 
