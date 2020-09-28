@@ -37,7 +37,8 @@ class _RegisterState extends State<Register> {
 
   var txt = TextEditingController();
 
-  List<String> _houseTypes = <String>['', 'red', 'green', 'blue', 'orange'];
+  List<String> _houseTypes = <String>['', 'Young Couple (no kids)', 'Older Couple (no kids)', 'Family with Children under 5 years',
+    'Family with Children over 5 years', 'Group Living (flatting)', 'Singular Occupant'];
 
 
   @override
@@ -142,7 +143,7 @@ class _RegisterState extends State<Register> {
                                     decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
-                                        'Street Address',
+                                        'Home Address',
                                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         textAlign: TextAlign.center,
                                       ),
@@ -190,7 +191,7 @@ class _RegisterState extends State<Register> {
                                     decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
-                                        'Recycling Bin Code',
+                                        'House Type',
                                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                                         textAlign: TextAlign.center,
                                       ),
@@ -339,7 +340,7 @@ class _RegisterState extends State<Register> {
                                     //start of text field for waste bin
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
-                                      decoration: textInputDecoration, //the page/class
+                                      decoration: textInputDecoration,
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
@@ -349,7 +350,7 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ), //text box
 
-                                  Container (
+                           /*       Container (
                                     width: 300,
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
@@ -365,12 +366,12 @@ class _RegisterState extends State<Register> {
                                         setState(() => recBin = val);
                                       },
                                     ),
-                                  ), //text box
+                                  ), *///text box
 
                                   //trialling house type
                                   Container (
                                     width: 300,
-                                    height: 70,
+                                    height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
                                     //start of text field for house type
@@ -440,7 +441,7 @@ class _RegisterState extends State<Register> {
                             error,
                             style: TextStyle(color: Colors.red)),
 
-                        Container(
+                       Container(
                           width: 300.0,
                           height: 50.0,
                           margin: const EdgeInsets.only(top: 20.0),
