@@ -1,3 +1,4 @@
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
@@ -32,8 +33,11 @@ class _RegisterState extends State<Register> {
   String wasteBin = "";
   String recBin = "";
   int userPin = null;
+  String houseType = "";
 
   var txt = TextEditingController();
+
+  List<String> _houseTypes = <String>['', 'red', 'green', 'blue', 'orange'];
 
 
   @override
@@ -350,7 +354,7 @@ class _RegisterState extends State<Register> {
                                     height: 50,
                                     margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for rec bin
                                     child: new TextFormField(
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration,
@@ -363,6 +367,67 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ), //text box
 
+                                  //trialling house type
+                                  Container (
+                                    width: 300,
+                                    height: 70,
+                                    margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
+
+                                    //start of text field for house type
+                                    child: FormField(
+                                    builder: (FormFieldState state) {
+                                      return InputDecorator(
+                                        decoration: textInputDecoration,
+                                        child: new DropdownButtonHideUnderline(
+                                          child: new DropdownButton(
+                                            value: houseType,
+                                            isDense: true,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                houseType = val;
+                                              });
+                                            },
+                                            items: _houseTypes.map((
+                                                String value) {
+                                              return new DropdownMenuItem(
+                                                value: value,
+                                                child: new Text(value),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ),
+                                      );
+                                    } )
+
+
+
+
+
+
+                                    /*DropDownFormField(
+                                      titleText: null,
+                                      hintText: "Please choose one",
+                                      value: houseType,
+                                      onChanged: (val) {
+                                        setState(() { houseType = val; });
+                                      },
+                                      dataSource: [
+                                        {
+                                          "display" : "Young household (flat)",
+                                          "value" : "flat",
+                                        },
+                                        {
+                                          "display" :"Young couple",
+                                          "value" : "Young couple",
+                                        }
+                                      ],
+                                      textField: 'display',
+                                      valueField: 'value',
+                                    ),*/
+
+
+                                  ),
+
 
                                 ] //g widget
                             ) //column f
@@ -374,6 +439,30 @@ class _RegisterState extends State<Register> {
                         Text (
                             error,
                             style: TextStyle(color: Colors.red)),
+
+                        Container(
+                          width: 300.0,
+                          height: 50.0,
+                          margin: const EdgeInsets.only(top: 20.0),
+
+                          child:
+                          RaisedButton(
+                            padding: const EdgeInsets.all(8.0),
+                            textColor: Colors.white,
+                            color: HexColor("#00AAAD"), //get actual colour
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            child: new Text("TEST",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            onPressed: () async {
+                              print(houseType);
+                            },
+                          ),
+                        ),
+
+
+
                         //button: h
                         Container(
                           width: 300.0,
