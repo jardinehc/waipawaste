@@ -13,12 +13,13 @@ class UserData {
   final String wasteBin;
   final String recBin;
   final int userPin;
+  final String houseType;
 
   final int waste1;
   final int waste2;
   final int waste3;
 
-  UserData({ this.uid, this.name, this.address, this.wasteBin, this.recBin, this.userPin, this.waste1, this.waste2, this.waste3});
+  UserData({ this.uid, this.name, this.address, this.wasteBin, this.recBin, this.userPin, this.houseType, this.waste1, this.waste2, this.waste3});
 }
 
 //for waipa data

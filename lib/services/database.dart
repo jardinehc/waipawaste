@@ -15,7 +15,7 @@ class DatabaseService {
   final CollectionReference contactCollection = Firestore.instance.collection("contacts");
 
 
-  Future updateUserData(String name, String address, String wasteBin, String recBin, int userPin, int waste1, int waste2, int waste3) async
+  Future updateUserData(String name, String address, String wasteBin, String recBin, String houseType, int userPin, int waste1, int waste2, int waste3) async
   {
 
     return await userCollection.document(uid).setData({
@@ -24,6 +24,7 @@ class DatabaseService {
       'wasteBin' : wasteBin,
       'recBin' : recBin,
       'userPin' : userPin,
+      'houseType': houseType,
 
       'waste1' : waste1,
       "waste2" : waste2,
@@ -44,6 +45,7 @@ class DatabaseService {
       recBin: snapshot.data['recBin'],
       userPin: snapshot.data['userPin'],
       wasteBin: snapshot.data['wasteBin'],
+      houseType: snapshot.data['houseType'],
 
       waste1: snapshot.data['waste1'],
       waste2: snapshot.data['waste2'],

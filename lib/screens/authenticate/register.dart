@@ -398,38 +398,9 @@ class _RegisterState extends State<Register> {
                                           ),
                                         ),
                                       );
-                                    } )
-
-
-
-
-
-
-                                    /*DropDownFormField(
-                                      titleText: null,
-                                      hintText: "Please choose one",
-                                      value: houseType,
-                                      onChanged: (val) {
-                                        setState(() { houseType = val; });
-                                      },
-                                      dataSource: [
-                                        {
-                                          "display" : "Young household (flat)",
-                                          "value" : "flat",
-                                        },
-                                        {
-                                          "display" :"Young couple",
-                                          "value" : "Young couple",
-                                        }
-                                      ],
-                                      textField: 'display',
-                                      valueField: 'value',
-                                    ),*/
-
-
+                                    }
+                                    )
                                   ),
-
-
                                 ] //g widget
                             ) //column f
 
@@ -440,28 +411,6 @@ class _RegisterState extends State<Register> {
                         Text (
                             error,
                             style: TextStyle(color: Colors.red)),
-
-                       Container(
-                          width: 300.0,
-                          height: 50.0,
-                          margin: const EdgeInsets.only(top: 20.0),
-
-                          child:
-                          RaisedButton(
-                            padding: const EdgeInsets.all(8.0),
-                            textColor: Colors.white,
-                            color: HexColor("#00AAAD"), //get actual colour
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)),
-                            child: new Text("TEST",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            onPressed: () async {
-                              print(houseType);
-                            },
-                          ),
-                        ),
-
 
 
                         //button: h
@@ -484,7 +433,7 @@ class _RegisterState extends State<Register> {
                               if(_formKey.currentState.validate()) //valid or invalid form
                                 {
                                 setState(() => loading = true);
-                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, userPin, 0, 0, 0);
+                                  dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, houseType, userPin, 0, 0, 0);
                                   if(result == null)
                                     {
                                       setState(() => loading = false);

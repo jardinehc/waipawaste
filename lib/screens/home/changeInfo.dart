@@ -27,9 +27,22 @@ class _changeInfoState extends State<changeInfo> {
   String _newAddress;
   String _newWasteBin;
   String _newRecBin;
+  String _newHouseType;
   int _newUserPin;
 
+ // String dynamicHouseType = "";
+
   var txt = TextEditingController();
+/*
+  String home(String newVal)
+  {
+    dynamicHouseType = newVal;
+    return this.dynamicHouseType;
+  }*/
+
+
+  List<String> _houseTypes = <String>['', 'Young Couple (no kids)', 'Older Couple (no kids)', 'Family with Children under 5 years',
+    'Family with Children over 5 years', 'Group Living (flatting)', 'Singular Occupant'];
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +57,8 @@ class _changeInfoState extends State<changeInfo> {
       UserData userData = snapshot.data;
 
       txt.text = userData.address;
+      String dynamicHouseType = userData.houseType;
+     // dynamicHouseType = "";
 
       return Scaffold(
           backgroundColor: const Color(0xffffffff),
@@ -164,7 +179,7 @@ class _changeInfoState extends State<changeInfo> {
                                     decoration: boxDecoration,
                                     child: Center(
                                       child: Text(
-                                        'Recycling Bin Code',
+                                        'House Type',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white),
@@ -224,7 +239,7 @@ class _changeInfoState extends State<changeInfo> {
                                       {
                                         print("NOT NULL");
                                         _newAddress = p.description;
-                                        print(_newAddress);
+                                      //  print(_newAddress);
                                         txt.text = _newAddress;
                                         //  controller: txt;
                                       }
@@ -282,13 +297,12 @@ class _changeInfoState extends State<changeInfo> {
                                     margin: EdgeInsets.only(
                                         bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
+                                    //start of text field for wasteBin
                                     child: new TextFormField(
                                       initialValue: userData.wasteBin,
                                       textAlignVertical: TextAlignVertical
                                           .center,
                                       decoration: textInputDecoration,
-                                      //the page/class
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
@@ -301,22 +315,54 @@ class _changeInfoState extends State<changeInfo> {
                                   Container(
                                     width: 300,
                                     height: 50,
-                                    margin: EdgeInsets.only(
-                                        bottom: 5.0, left: 0.0),
+                                    margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
 
-                                    //start of text field for email
-                                    child: new TextFormField(
-                                      initialValue: userData.recBin,
-                                      textAlignVertical: TextAlignVertical
-                                          .center,
-                                      decoration: textInputDecoration,
-                                      style: new TextStyle(
-                                        fontFamily: "Poppins",
-                                      ),
-                                      onChanged: (val) {
-                                        setState(() => _newRecBin = val);
-                                      },
-                                    ),
+                                      //start of text field for house type
+                                      child: FormField(
+                                          builder: (FormFieldState state) {
+                                            return InputDecorator(
+                                              decoration: textInputDecoration,
+                                              child: new DropdownButtonHideUnderline(
+                                                child: new DropdownButton(
+
+                                                  onChanged: (val) async {
+                                                    dynamicHouseType = val;
+                                                    _newHouseType = val;
+
+                                                      await DatabaseService(uid: user.uid).updateUserData(
+                                                          _newName ?? userData.name,
+                                                          _newAddress ?? snapshot.data.address,
+                                                          _newWasteBin ?? snapshot.data.wasteBin,
+                                                          _newRecBin ?? snapshot.data.recBin,
+                                                          _newHouseType ?? snapshot.data.houseType,
+                                                          _newUserPin ?? snapshot.data.userPin,
+                                                          snapshot.data.waste1,
+                                                          snapshot.data.waste2,
+                                                          snapshot.data.waste3
+                                                      );
+                                                  },
+
+                                                 /* onChanged: (val) {
+                                                    setState(() {
+                                                    //  value: val;
+                                                      dynamicHouseType = val;
+                                                      _newHouseType = val;
+                                                    });
+                                                  },*/
+                                                  value: dynamicHouseType,
+                                                  isDense: true,
+                                                  items: _houseTypes.map((
+                                                      String value) {
+                                                    return new DropdownMenuItem(
+                                                      value: value,
+                                                      child: new Text(value),
+                                                    );
+                                                  }).toList(),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                      )
                                   ), //text box
                                 ] //g widget
                             ) //column f
@@ -352,6 +398,7 @@ class _changeInfoState extends State<changeInfo> {
                                     _newAddress ?? snapshot.data.address,
                                     _newWasteBin ?? snapshot.data.wasteBin,
                                     _newRecBin ?? snapshot.data.recBin,
+                                    _newHouseType ?? snapshot.data.houseType,
                                     _newUserPin ?? snapshot.data.userPin,
                                     snapshot.data.waste1,
                                   snapshot.data.waste2,
