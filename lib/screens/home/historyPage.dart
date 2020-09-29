@@ -145,7 +145,7 @@ class HisPage extends StatelessWidget {
                               Container( //collection day box
                                 width: 200,
                                 height: 50,
-                                margin: EdgeInsets.only(bottom: 5.0),
+                                margin: EdgeInsets.only(bottom: 8.0),
 
                                 decoration: new BoxDecoration(
                                   shape: BoxShape.rectangle,

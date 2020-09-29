@@ -183,10 +183,7 @@ class _waipalistState1 extends State<waipalist1> {
                           //margin: EdgeInsets.all(5.0),
                           margin: EdgeInsets.only(
                               left: 15.0),
-                          decoration:BoxDecoration (
-                              shape: BoxShape.rectangle,
-                              color: Colors.black,
-                          )
+                            decoration: boxDecoration,
                         ),
 
                         Container( //name box
@@ -214,7 +211,10 @@ class _waipalistState1 extends State<waipalist1> {
                           //margin: EdgeInsets.all(5.0),
                           margin: EdgeInsets.only(
                               left: 10.0),
-                          decoration: boxDecoration,
+                            decoration:BoxDecoration (
+                              shape: BoxShape.rectangle,
+                              color: Colors.black,
+                            )
                         ),
 
                         Container( //text box waipa
@@ -242,31 +242,31 @@ class _waipalistState1 extends State<waipalist1> {
 
                   Container( //boxes c
 
-                      margin: EdgeInsets.all(15.0),
-                      padding: EdgeInsets.all(15.0),
+                      margin: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(5.0),
 
-                      decoration: new BoxDecoration(
+                  /*    decoration: new BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         shape: BoxShape.rectangle,
                         color: HexColor("#E3F6F6"),
-                      ),
+                      ),*/
 
-                      child: WeightChart(
+                    child: WeightChart(
                           data:  [
                             WeightsSeries(
                               date: "3 AGO",
                               weight: userWeight3,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             ),
                             WeightsSeries(
                               date: "2 AGO",
                               weight: userWeight2,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             ),
                             WeightsSeries(
                               date: "LAST ",
                               weight: userWeight1,
-                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
+                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
                             ),
                           ],
                           dataWaipa:
@@ -274,20 +274,20 @@ class _waipalistState1 extends State<waipalist1> {
                             WeightsSeries(
                               date: "3 AGO",
                               weight: avgWeight3,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "2 AGO",
                               weight: avgWeight2,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             ),
                             WeightsSeries(
                               date: "LAST ",
                               weight: avgWeight1,
-                              barcolor: charts.ColorUtil.fromDartColor(HexColor("#00AAAD")),
+                              barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             )],
                           title: "LAST 3 WASTE COLLECTIONS (Kg)"
-                      )
+                      ),
                   ),
 
 

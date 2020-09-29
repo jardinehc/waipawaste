@@ -103,8 +103,8 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
-                            //shape: RoundedRectangleBorder(
-                            //  borderRadius: BorderRadius.circular(25)),
+                             shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
                             child: new Text("NOTIFICATIONS",
                               style: TextStyle(fontSize: 18, color: Colors.white),
                             ),
@@ -117,7 +117,7 @@ class Home extends StatelessWidget {
                           ),
                         ),
 
-                        //HISTORY
+                        //SETTINGS
                         Container(
                           width: 300.0,
                           height: 50.0,
@@ -128,8 +128,8 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
-                            //shape: RoundedRectangleBorder(
-                            //  borderRadius: BorderRadius.circular(25)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
                             child: new Text("SETTINGS",
                               style: TextStyle(fontSize: 18),
                             ),
@@ -154,7 +154,7 @@ class Home extends StatelessWidget {
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)),
+                                borderRadius: BorderRadius.circular(20)),
                             child: new Text("HELP",
                               style: TextStyle(fontSize: 18),
                             ),
@@ -227,7 +227,7 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
-                            //shape: RoundedRectangleBorder(
+                           // shape: RoundedRectangleBorder(
                             //  borderRadius: BorderRadius.circular(25)),
                             child: new Text("LOGOUT",
                               style: TextStyle(fontSize: 18),
