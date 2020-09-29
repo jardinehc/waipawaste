@@ -32,6 +32,16 @@ class HisPage extends StatelessWidget {
     bool neutral = false;
     bool noResults = true;
 
+    String resultText = "";
+
+    String upwardText = "Your recent collections have been getting heavier!"
+        "\nTry recyling plastics 1, 2, or 5 and cardboard.";
+    String downwardText = "Welldone on your efforts at decreasing your rubbish!"
+        "\nHave you tried using packaging free products?";
+    String neutralText = "Your waste is remaing the same!"
+        "\nHave you tried using packaging free products?";
+    String noResultsText = "You have no recent collections.";
+
 
     return StreamBuilder<UserData>(
       stream: DatabaseService(uid: user.uid).userData,
@@ -72,14 +82,25 @@ class HisPage extends StatelessWidget {
             if(differnce > 0 && !noResults)
               {
                 upward = true;
+                resultText = "Your recent collections have been getting heavier!"
+                    "\nTry recyling plastics 1, 2, or 5 and cardboard.";
               }
             else if(differnce < 0 && !noResults)
               {
+                resultText = "Welldone on your efforts at decreasing your rubbish!"
+                    "\nHave you tried using packaging free products?";
                 downward = true;
               }
             else if(!noResults)
               {
+                resultText = "Your waste is remaing the same!"
+                    "\nHave you tried using packaging free products?";
                 neutral = true;
+              }
+
+            if(noResults)
+              {
+                resultText = "You have no recent collections.";
               }
 
             return Scaffold(
@@ -104,14 +125,15 @@ class HisPage extends StatelessWidget {
 
                               Container( //boxes c
 
-                                  margin: EdgeInsets.all(15.0),
-                                  padding: EdgeInsets.all(15.0),
+                                 // margin: EdgeInsets.all(5.0),
+                                  padding: EdgeInsets.all(5.0),
+                                margin: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
 
-                                  decoration: new BoxDecoration(
+                                /*  decoration: new BoxDecoration(
                                     borderRadius: BorderRadius.circular(20.0),
                                     shape: BoxShape.rectangle,
                                     color: HexColor("#E3F6F6"),
-                                  ),
+                                  ),*/
 
                                   child: WeightChart(
                                     data: data,
@@ -119,16 +141,27 @@ class HisPage extends StatelessWidget {
                                   )
                               ),
 
-                              //image or message depending on user info
-                              Container(
-                                //if no collections then a message
+                              //text depending on trend
+                              Container( //collection day box
+                                width: 200,
+                                height: 50,
+                                margin: EdgeInsets.only(bottom: 5.0),
 
-                                //if trending upward then a :(
-
-                                //if same then a meutral face
-
-                                //if trending downward then a :)
-
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  color: Colors.white,
+                                 /* border: Border.all(
+                                    color: HexColor("#00AAAD"),
+                                    width: 2,
+                                  ),*/
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    resultText,
+                                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
 
                               //back button

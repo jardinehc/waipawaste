@@ -233,7 +233,15 @@ class Home extends StatelessWidget {
                               style: TextStyle(fontSize: 18),
                             ),
                             onPressed: () async {
-                              await _auth.signOut(); },
+                              //not SUPPOSED to do this but oh well
+                            /*  Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SignIn()),
+                              );*/
+
+                              await _auth.signOut();
+                              //navigate to sign in??
+                              },
                           ),
                         ),
 
