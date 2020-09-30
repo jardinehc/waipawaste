@@ -56,8 +56,8 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
-                            //shape: RoundedRectangleBorder(
-                            //  borderRadius: BorderRadius.circular(25)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
                             child: new Text("PAST COLLECTIONS",
                               style: TextStyle(fontSize: 18),
                             ),
@@ -80,6 +80,8 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
                             child: new Text("WAIPA INFO",
                               style: TextStyle(fontSize: 18),
                             ),
@@ -104,7 +106,7 @@ class Home extends StatelessWidget {
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
                              shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)),
+                              borderRadius: BorderRadius.circular(20)),
                             child: new Text("NOTIFICATIONS",
                               style: TextStyle(fontSize: 18, color: Colors.white),
                             ),
@@ -129,7 +131,7 @@ class Home extends StatelessWidget {
                             textColor: Colors.white,
                             color: HexColor("#00AAAD"), //get actual colour
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)),
+                              borderRadius: BorderRadius.circular(20)),
                             child: new Text("SETTINGS",
                               style: TextStyle(fontSize: 18),
                             ),
