@@ -4,6 +4,7 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
 import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
+import 'package:wdc_login/screens/home/home.dart';
 import 'package:wdc_login/screens/home/yourinfo.dart';
 import 'package:wdc_login/services/auth.dart';
 import 'package:wdc_login/services/database.dart';
@@ -427,7 +428,7 @@ class _changeInfoState extends State<changeInfo> {
                             ),
                             onPressed: () { Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => YourInfo()),
+                              MaterialPageRoute(builder: (context) => Home()),
                             );},
                           ),
                         ),
