@@ -237,11 +237,11 @@ class Home extends StatelessWidget {
                             ),
                             onPressed: () async {
                               //not SUPPOSED to do this but oh well
-                            /*  Navigator.push(
+                             /* Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => SignIn()),
-                              );*/
-
+                              );
+*/
                               await _auth.signOut();
                               //navigate to sign in??
                               },
