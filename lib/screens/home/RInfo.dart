@@ -184,21 +184,31 @@ class _waipalistState1 extends State<waipalist1> {
                   ),
 
                  Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
 
-                        Container( //user colour box
+                        /*SizedBox(
+                          width: 12
+                        ),*/
+                      //  Expanded (
+                      //    flex: 1,
+
+                     //    child: Row(
+                     //      children: <Widget>[
+
+                         Container( //user colour box
 
                           width: 40,
                           height: 25,
                           //margin: EdgeInsets.all(5.0),
-                          margin: EdgeInsets.only(
-                              left: 15.0),
+                        //  margin: EdgeInsets.only(
+                         //     left: 25.0),
                             decoration: boxDecoration,
                         ),
 
-                        Container( //name box
+                        Container(
 
-                          width: 150,
+                          width: 100,
                           height: 50,
                           //margin: EdgeInsets.all(5.0),
                           /*margin: EdgeInsets.only(
@@ -207,12 +217,14 @@ class _waipalistState1 extends State<waipalist1> {
                             child: Text(
                               '= your last 3 waste\ncollections',
                               style: TextStyle(
+                                fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
                         ),
+
 
                         Container( //colour box
 
@@ -229,7 +241,7 @@ class _waipalistState1 extends State<waipalist1> {
 
                         Container( //text box waipa
 
-                          width: 150,
+                          width: 100,
                           height: 50,
                           //margin: EdgeInsets.all(5.0),
                           /*margin: EdgeInsets.only(
@@ -238,13 +250,18 @@ class _waipalistState1 extends State<waipalist1> {
                             child: Text(
                               '= average of similar households',
                               style: TextStyle(
+                                fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                        ),
-
+                      ),
+                  //        ],
+                //         ),
+              //   ),
+    ],
+                 ),
                       ],
                     ),
 
@@ -326,9 +343,6 @@ class _waipalistState1 extends State<waipalist1> {
                   ),
                 ]
             )
-          ]
-      ),
-
     );
 
  /* @override

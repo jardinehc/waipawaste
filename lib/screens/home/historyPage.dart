@@ -157,7 +157,6 @@ class HisPage extends StatelessWidget {
                                 ),
                                 child: Center(
                                 //  child: Container(
-                                    //TODO: this i changed for briars thing
                                    // height: double.infinity,
                                   // width: double.infinity,
                                    // margin: const EdgeInsets.only(top: 20, left: 50, right: 50, bottom: 20),
