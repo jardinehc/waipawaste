@@ -88,7 +88,7 @@ class HisPage extends StatelessWidget {
             else if(differnce < 0 && !noResults)
               {
                 resultText = "Well done on your efforts at decreasing your rubbish!"
-                    "\nHave you tried using packaging free products?";
+                    "\nHave you tried using packaging free products? ";
                 downward = true;
               }
             else if(!noResults)
@@ -137,7 +137,7 @@ class HisPage extends StatelessWidget {
 
                                   child: WeightChart(
                                     data: data,
-                                    title: "LAST 3 WASTE COLLECTIONS (Kg)"
+                                    title: "LAST 3 WASTE COLLECTIONS (kg)"
                                   )
                               ),
 

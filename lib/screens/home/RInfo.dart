@@ -313,16 +313,16 @@ class _waipalistState1 extends State<waipalist1> {
                               weight: avgWeight1,
                               barcolor: charts.ColorUtil.fromDartColor(Colors.black),
                             )],
-                          title: "LAST 3 WASTE COLLECTIONS (Kg)"
+                          title: "LAST 3 WASTE COLLECTIONS (kg)"
                       ),
                   ),
 
 
                   //back button
                   Container( //container so i can set the margin
-                    width: 300.0,
+                    width: double.infinity,
                     height: 50.0,
-                    margin: const EdgeInsets.only(top: 5.0, bottom: 10),
+                    margin: const EdgeInsets.only(top: 20, left: 50, right: 50, bottom: 20),
 
                     child: RaisedButton(
                       padding: const EdgeInsets.all(8.0),

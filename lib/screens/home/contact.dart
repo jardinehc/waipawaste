@@ -14,7 +14,7 @@ class Contact extends StatefulWidget {
 
 class _ContactState extends State<Contact> {
 
-  String message = "";
+  String message = "boo";
   String name = "";
   String email= "";
 
@@ -108,7 +108,6 @@ class _ContactState extends State<Contact> {
                                   ),
                                 ),
                               ),
-
                               Container( //message box
 
                                 width: 90,
@@ -185,6 +184,7 @@ class _ContactState extends State<Contact> {
                                 child: new TextFormField(
                                   textCapitalization: TextCapitalization.sentences,
                                   maxLines: null,
+                                  expands: true,
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: textInputDecoration,
                                   style: new TextStyle(
