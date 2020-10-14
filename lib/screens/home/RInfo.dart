@@ -48,9 +48,16 @@ class _waipalistState1 extends State<waipalist1> {
   @override
   Widget build(BuildContext context) {
 
+    HisPage();
+
     int userWeight3 = HisPage.weight3;
     int userWeight2 = HisPage.weight2;
     int userWeight1 = HisPage.weight1;
+
+ /*   if(userWeight1 == null)
+      {
+        return Loading();
+      }*/
 
     List<int> weight1List = new List();
     List<int> weight2List = new List();
@@ -118,6 +125,9 @@ class _waipalistState1 extends State<waipalist1> {
             }
 
         }
+     /* else{
+        return Loading();
+      }*/
 /*      print("weight 1: $weight1");
       print("weight 2: $weight2");
       print("weight 3: $weight3");*/

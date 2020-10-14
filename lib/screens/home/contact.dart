@@ -140,6 +140,7 @@ class _ContactState extends State<Contact> {
 
                                 //text field for name
                                 child: new TextFormField(
+                                  textCapitalization: TextCapitalization.words,
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: textInputDecoration,
                                   style: new TextStyle(
@@ -159,6 +160,7 @@ class _ContactState extends State<Contact> {
 
                                 //start of text field for email
                                 child: new TextFormField(
+                                  textCapitalization: TextCapitalization.none,
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: textInputDecoration,
                                   keyboardType: TextInputType.emailAddress,
@@ -181,7 +183,7 @@ class _ContactState extends State<Contact> {
 
                                 //start of text field for message
                                 child: new TextFormField(
-
+                                  textCapitalization: TextCapitalization.sentences,
                                   maxLines: null,
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: textInputDecoration,

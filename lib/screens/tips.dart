@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:wdc_login/shared/constants.dart';
 
 import 'authenticate/sign_in.dart';
+import 'home/home.dart';
 
 
 class Tips extends StatelessWidget {
@@ -43,7 +44,7 @@ class Tips extends StatelessWidget {
 
                         //box 1
                         Container( //boxes c
-
+                          width: double.infinity,
                           margin: EdgeInsets.all(15.0),
                           padding: EdgeInsets.all(15.0),
 
@@ -58,7 +59,6 @@ class Tips extends StatelessWidget {
                               children:<Widget> [
 
                                 Column(
-
                                     children: <Widget>[
                                       new Text(
                                         'Weekly Update',
@@ -191,7 +191,7 @@ class Tips extends StatelessWidget {
                                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                                       ),
                                       new Text(
-                                        '\nAwesome things we have achieved recently\nthrough recyling. We should all be proud.',
+                                        '\nAwesome things we have achieved recently\nthrough recycling. We should all be proud.',
                                         style: TextStyle(color: Colors.black),
                                       ),
                                     ]
@@ -250,9 +250,32 @@ class Tips extends StatelessWidget {
 
                         //c boxes
                       ] //a widget
-                  )//column a
+                  ),//column a
 
+                  Container( //container so i can set the margin
+                    //width: 300.0,
+                    width: double.infinity,
+                    height: 50.0,
+                    margin: const EdgeInsets.only(top: 20, left: 50, right: 50, bottom: 20),
+                   // margin: const EdgeInsets.only(top: 5.0, bottom: 10),
 
+                    child: RaisedButton(
+                      padding: const EdgeInsets.all(8.0),
+                      textColor: Colors.black,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              color: HexColor("#00AAAD"), width: 2),
+                          borderRadius: BorderRadius.circular(25)),
+                      child: new Text("BACK",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      onPressed: () { Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );},
+                    ),
+                  ),
                 ]
             )
         )

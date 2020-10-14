@@ -87,7 +87,7 @@ class HisPage extends StatelessWidget {
               }
             else if(differnce < 0 && !noResults)
               {
-                resultText = "Welldone on your efforts at decreasing your rubbish!"
+                resultText = "Well done on your efforts at decreasing your rubbish!"
                     "\nHave you tried using packaging free products?";
                 downward = true;
               }
@@ -142,11 +142,11 @@ class HisPage extends StatelessWidget {
                               ),
 
                               //text depending on trend
-                              Container( //collection day box
+                              Container(
                                 width: 200,
-                                height: 50,
+                                height: 80,
                                 margin: EdgeInsets.only(bottom: 8.0),
-
+                                //padding: EdgeInsets.all(10.0),
                                 decoration: new BoxDecoration(
                                   shape: BoxShape.rectangle,
                                   color: Colors.white,
@@ -156,22 +156,30 @@ class HisPage extends StatelessWidget {
                                   ),*/
                                 ),
                                 child: Center(
-                                  child: Text(
-                                    resultText,
-                                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-                                    textAlign: TextAlign.center,
+                                //  child: Container(
+                                    //TODO: this i changed for briars thing
+                                   // height: double.infinity,
+                                  // width: double.infinity,
+                                   // margin: const EdgeInsets.only(top: 20, left: 50, right: 50, bottom: 20),
+                                    //child: Expanded(
+                                    child: Text(
+                                      resultText,
+                                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                 //   ),
                                   ),
                                 ),
-                              ),
+                            //  ),
 
                               //back button
-                              Container( //container so i can set the margin
+                              Container(
                                 width: 300.0,
                                 height: 50.0,
                                 margin: const EdgeInsets.only(top: 5.0, bottom: 10),
 
                                 child: RaisedButton(
-                                  padding: const EdgeInsets.all(8.0),
+                                 // padding: const EdgeInsets.all(8.0),
                                   textColor: Colors.black,
                                   color: Colors.white,
                                   shape: RoundedRectangleBorder(

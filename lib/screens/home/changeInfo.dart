@@ -205,6 +205,7 @@ class _changeInfoState extends State<changeInfo> {
 
                                     //text field for name
                                     child: new TextFormField(
+                                      textCapitalization: TextCapitalization.words,
                                       initialValue: userData.name,
                                       textAlignVertical: TextAlignVertical
                                           .center,

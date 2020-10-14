@@ -213,6 +213,7 @@ class _RegisterState extends State<Register> {
 
                                     //text field for name
                                     child: new TextFormField(
+                                      textCapitalization: TextCapitalization.words,
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration,
                                       style: new TextStyle(
@@ -231,6 +232,7 @@ class _RegisterState extends State<Register> {
 
                                     //start of text field for email
                                     child: new TextFormField(
+                                      textCapitalization: TextCapitalization.none,
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: textInputDecoration,
                                       keyboardType: TextInputType.emailAddress,
