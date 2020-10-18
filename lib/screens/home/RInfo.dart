@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:bezier_chart/bezier_chart.dart';
 import 'package:intl/intl.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -266,11 +267,29 @@ class _waipalistState1 extends State<waipalist1> {
                     ),
 
 
+       /*     Container( //text box waipa
+
+              width: 100,
+              height: 50,
+              //margin: EdgeInsets.all(5.0),
+             *//* margin: EdgeInsets.only(
+                              bottom: 5.0, left: 5.0),*//*
+              child: Center(
+                child: Text(
+                  'Press and hold to scroll through this chart and view the exact weights',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),*/
 
                   Container( //boxes c
 
-                      margin: EdgeInsets.all(5.0),
-                      padding: EdgeInsets.all(5.0),
+                     /* margin: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(5.0),*/
 
                   /*    decoration: new BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
@@ -278,6 +297,7 @@ class _waipalistState1 extends State<waipalist1> {
                         color: HexColor("#E3F6F6"),
                       ),*/
 
+                  //  child: sample2(context, userWeight1, userWeight2, userWeight3, avgWeight1, avgWeight2, avgWeight3),
                     child: WeightChart(
                           data:  [
                             WeightsSeries(
@@ -379,6 +399,61 @@ class _waipalistState1 extends State<waipalist1> {
     // return numWeights;
     //return Container();*/
   }
+
+  Widget sample2(BuildContext context, int u1, int u2, int u3, int w1, int w2, int w3) {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        height: MediaQuery.of(context).size.height / 2,
+        width: MediaQuery.of(context).size.width,
+        child: BezierChart(
+          bezierChartScale: BezierChartScale.CUSTOM,
+          xAxisCustomValues: const [1, 2, 3], // 4, 5, 6, 7],
+          series:  [
+            BezierLine(
+              //users weights
+              lineColor: HexColor("#00AAAD"),
+              lineStrokeWidth: 3.0,
+              label: "Your Weight (kg)",
+              data:  [
+                DataPoint<double>(value: u1.toDouble(), xAxis:  1),
+                DataPoint<double>(value: u2.toDouble(), xAxis: 2),
+                DataPoint<double>(value: u3.toDouble(), xAxis: 3),
+               /* DataPoint<double>(value: 50, xAxis: 4),
+                DataPoint<double>(value: 40, xAxis: 5),
+                DataPoint<double>(value: 10, xAxis: 6),
+                DataPoint<double>(value: 30, xAxis: 7),*/
+              ],
+            ),
+            BezierLine(
+              //waipa weights
+              lineColor: Colors.black,
+              lineStrokeWidth: 3.0,
+              label: "Average of Waipa (kg)",
+              data: [
+                DataPoint<double>(value: w1.toDouble(), xAxis: 1),
+                DataPoint<double>(value: w2.toDouble(), xAxis: 2),
+                DataPoint<double>(value: w3.toDouble(), xAxis: 3),
+             /*   DataPoint<double>(value: 40, xAxis: 4),
+                DataPoint<double>(value: 40, xAxis: 5),
+                DataPoint<double>(value: 9, xAxis: 6),
+                DataPoint<double>(value: 11, xAxis: 7),*/
+              ],
+            ),
+          ],
+          config: BezierChartConfig(
+            //updatePositionOnTap: true,
+            xAxisTextStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            verticalIndicatorStrokeWidth: 2.0,
+            verticalIndicatorColor: Colors.black12,
+            showVerticalIndicator: true,
+            contentWidth: MediaQuery.of(context).size.width * 2,
+            backgroundColor: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class WeightChart extends StatelessWidget {
@@ -435,7 +510,7 @@ class WeightChart extends StatelessWidget {
                   (
                   series,
                   animate: true,
-                  barGroupingType: charts.BarGroupingType.stacked,
+                  barGroupingType: charts.BarGroupingType.grouped,
                 ),
               )
             ],
@@ -445,4 +520,6 @@ class WeightChart extends StatelessWidget {
     );
   }
 }
+
+
 

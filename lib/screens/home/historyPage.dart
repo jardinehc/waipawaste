@@ -1,3 +1,4 @@
+import 'package:bezier_chart/bezier_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,6 @@ class HisPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     User user = Provider.of<User>(context);
 
     int differnce;
@@ -135,6 +135,7 @@ class HisPage extends StatelessWidget {
                                     color: HexColor("#E3F6F6"),
                                   ),*/
 
+                               // child: sample1(context, weight1, weight2, weight3),
                                   child: WeightChart(
                                     data: data,
                                     title: "LAST 3 WASTE COLLECTIONS (kg)"
@@ -213,6 +214,40 @@ class HisPage extends StatelessWidget {
       }
     );
   }
+
+   Widget sample1(BuildContext context, int w1, int w2, int w3) {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        height: MediaQuery.of(context).size.height / 2,
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: BezierChart(
+          bezierChartScale: BezierChartScale.CUSTOM,
+          xAxisCustomValues: const [0, 5, 10],
+          series:  [
+            BezierLine(
+              lineColor: Colors.black, //charts.ColorUtil.fromDartColor(HexColor("#00AAAD"))
+              data:  [
+                DataPoint<double>(value: weight1.toDouble(), xAxis: 0),
+                DataPoint<double>(value: weight2.toDouble(), xAxis: 5),
+                DataPoint<double>(value: weight3.toDouble(), xAxis: 10),
+              ],
+            ),
+          ],
+          config: BezierChartConfig(
+            xAxisTextStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            verticalIndicatorStrokeWidth: 3.0,
+            verticalIndicatorColor: Colors.black,
+            showVerticalIndicator: true,
+            backgroundColor: Colors.white,
+            bubbleIndicatorColor: Colors.black,
+            snap: false,
+          ),
+        ),
+      ),
+    );
+  }
+
 }
 
 class WeightChart extends StatelessWidget {
