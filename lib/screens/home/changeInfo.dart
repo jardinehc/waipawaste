@@ -29,7 +29,7 @@ class _changeInfoState extends State<changeInfo> {
   String _newWasteBin;
   String _newRecBin;
   String _newHouseType;
-  int _newUserPin;
+  String _newUserPin;
 
  // String dynamicHouseType = "";
 
@@ -287,7 +287,7 @@ class _changeInfoState extends State<changeInfo> {
                                       ),
                                       onChanged: (val) {
                                         setState(() =>
-                                        _newUserPin = int.parse(val));
+                                        _newUserPin = val); //int.parse(val));
                                       },
 
                                     ),

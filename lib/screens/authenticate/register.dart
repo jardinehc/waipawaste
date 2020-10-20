@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,8 +33,11 @@ class _RegisterState extends State<Register> {
   String address = "";
   String wasteBin = "";
   String recBin = "";
-  int userPin = null;
+  String userPin = "";
+//  int userPin = null;
   String houseType = "";
+
+  bool validPin = false;
 
   var txt = TextEditingController();
 
@@ -259,7 +263,7 @@ class _RegisterState extends State<Register> {
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                       ),
-                                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
+                                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 characters' : null,
                                       onChanged: (val) {
                                         setState(() => password = val);
                                       },
@@ -328,7 +332,8 @@ class _RegisterState extends State<Register> {
                                         fontFamily: "Poppins",
                                       ),
                                       onChanged: (val) {
-                                        setState(() => userPin = int.parse(val));
+                                        doesPinExist(val);
+                                        setState(() => userPin = val); //setState(() => userPin = int.parse(val));
                                       },
 
                                     ),
@@ -432,7 +437,7 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(fontSize: 18),
                             ),
                            onPressed: () async {
-                              if(_formKey.currentState.validate()) //valid or invalid form
+                              if(_formKey.currentState.validate() && validPin) //valid or invalid form
                                 {
                                 setState(() => loading = true);
                                   dynamic result = await _auth.registerWithEmailAndPassword(email, password, name, address, wasteBin, recBin, houseType, userPin, 0, 0, 0);
@@ -442,6 +447,9 @@ class _RegisterState extends State<Register> {
                                       setState(() => error = 'Please provide a valid email');
                                     }
                                 }
+                              else {
+                                setState(() => error = 'Please provide a unique 4 digit pin');
+                              }
                             },
                           ),
                         ),
@@ -548,5 +556,23 @@ class _RegisterState extends State<Register> {
 //            )
 //        )
 //    );
+  }
+
+    Future<bool> doesPinExist(String pin) async {
+      final QuerySnapshot result = await Firestore.instance
+          .collection('users')
+          .where('userPin', isEqualTo: pin)
+          .limit(1)
+          .getDocuments();
+      final List<DocumentSnapshot> documents = result.documents;
+
+      if(documents.length != 1 && pin.length == 4)
+        {
+          validPin = true;
+        }
+     // pinExists = documents.length == 1;
+
+      return documents.length == 1;
+
   }
 }

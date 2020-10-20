@@ -12,7 +12,7 @@ class UserData {
   final String address;
   final String wasteBin;
   final String recBin;
-  final int userPin;
+  final String userPin;
   final String houseType;
 
   final int waste1;
