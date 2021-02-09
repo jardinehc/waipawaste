@@ -42,7 +42,6 @@ class BlurryDialog extends StatelessWidget {
           ],
 
           elevation: 24.0,
-         // shape: CircleBorder(),
 
         ));
   }

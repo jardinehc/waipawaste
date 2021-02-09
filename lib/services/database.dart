@@ -7,7 +7,6 @@ class DatabaseService {
   DatabaseService({ this.uid });
 
   //collection reference
-  //final CollectionReference userCollection = Firestore.instance.collection("users");
   final CollectionReference userCollection = Firestore.instance.collection('users');
 
   final CollectionReference waipaCollection = Firestore.instance.collection('waipa');
@@ -31,9 +30,6 @@ class DatabaseService {
       "waste3" : waste3,
     });
   }
-
-
-
 
   //user data from snapshot
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot)
@@ -67,10 +63,6 @@ Stream<UserData> get userData {
         .map(_userDataFromSnapshot);
 }
 
-
-
-//for waipa info
-
   //as per lesson 20
 
   //waipa data from snapshot
@@ -84,11 +76,6 @@ Stream<UserData> get userData {
     }).toList();
   }
 
-  //get stream L20
-/*  Stream<List<Waipa>> get waipas {
-    return waipaCollection.snapshots().map(_waipaDataFromSnapshot);
-  }*/
-
   Stream<QuerySnapshot> get waipas {
     return waipaCollection.snapshots();
   }
@@ -97,25 +84,5 @@ Stream<UserData> get userData {
     return contactCollection.snapshots();
   }
 
-
-
-  //replicating that from user
-/*  WaipaData _waipaDataFromSnapshot2(DocumentSnapshot snapshot)
-  {
-    return WaipaData(
-        uid: uid,
-        weight: snapshot.data['weight'],
-        date: snapshot.data['date'],
-    );
-  }*/
-
-
-  //get user doc stream - listen to data from the user
-/*  Stream<WaipaData> get waipaData {
-    //print("users uid from database: ");
-    //print(uid);
-    return waipaCollection.document().snapshots()
-        .map(_waipaDataFromSnapshot2);
-  }*/
 
 }

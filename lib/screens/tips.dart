@@ -6,7 +6,8 @@ import 'package:wdc_login/shared/constants.dart';
 import 'authenticate/sign_in.dart';
 import 'home/home.dart';
 
-
+//"notifications"
+//these should be dynamic
 class Tips extends StatelessWidget {
   Tips({
     Key key,

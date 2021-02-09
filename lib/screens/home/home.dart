@@ -3,14 +3,9 @@ import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/screens/home/RInfo.dart';
 import 'package:wdc_login/screens/home/changeInfo.dart';
 import 'package:wdc_login/screens/home/contact.dart';
-import 'package:wdc_login/screens/home/help.dart';
-import 'package:wdc_login/screens/home/history.dart';
 import 'package:wdc_login/screens/home/historyPage.dart';
-import 'package:wdc_login/screens/home/regionalInfo.dart';
-import 'package:wdc_login/screens/home/yourinfo.dart';
 import 'package:wdc_login/screens/tips.dart';
 import 'package:wdc_login/services/auth.dart';
-import 'package:wdc_login/services/database.dart';
 import 'package:wdc_login/shared/constants.dart';
 
 class Home extends StatelessWidget {

@@ -6,18 +6,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
 import 'package:wdc_login/services/database.dart';
 import 'package:wdc_login/services/weights_series.dart';
 import 'package:wdc_login/shared/constants.dart';
-import 'package:wdc_login/shared/loading.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'home.dart';
 
 class RInfo extends StatelessWidget {
-
+//waipa info
   @override
   Widget build(BuildContext context) {
     return StreamProvider<QuerySnapshot>.value(
@@ -54,12 +52,6 @@ class _waipalistState1 extends State<waipalist1> {
     int userWeight3 = HisPage.weight3;
     int userWeight2 = HisPage.weight2;
     int userWeight1 = HisPage.weight1;
-
- /*   if(userWeight1 == null)
-      {
-        return Loading();
-      }*/
-
     List<int> weight1List = new List();
     List<int> weight2List = new List();
     List<int> weight3List = new List();
@@ -86,10 +78,6 @@ class _waipalistState1 extends State<waipalist1> {
     {
       if(doc.data['date'] != null)
         {
-            /*collectionDate = DateTime.parse(doc.data['dateTime']);
-            int difference = collectionDate.difference(today).inDays;
-            print("difference $difference");*/
-
             collectionWeek = doc.data['date'];
 
             //get the current week of the year
@@ -124,15 +112,7 @@ class _waipalistState1 extends State<waipalist1> {
               weight3 = doc.data['weight'];
               weight3List.add(weight3);
             }
-
         }
-     /* else{
-        return Loading();
-      }*/
-/*      print("weight 1: $weight1");
-      print("weight 2: $weight2");
-      print("weight 3: $weight3");*/
-
     }
 
     //find averages for each time period
@@ -244,9 +224,6 @@ class _waipalistState1 extends State<waipalist1> {
 
                           width: 100,
                           height: 50,
-                          //margin: EdgeInsets.all(5.0),
-                          /*margin: EdgeInsets.only(
-                              bottom: 5.0, left: 5.0),*/
                           child: Center(
                             child: Text(
                               '= average of similar households',
@@ -267,37 +244,7 @@ class _waipalistState1 extends State<waipalist1> {
                     ),
 
 
-       /*     Container( //text box waipa
-
-              width: 100,
-              height: 50,
-              //margin: EdgeInsets.all(5.0),
-             *//* margin: EdgeInsets.only(
-                              bottom: 5.0, left: 5.0),*//*
-              child: Center(
-                child: Text(
-                  'Press and hold to scroll through this chart and view the exact weights',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),*/
-
                   Container( //boxes c
-
-                     /* margin: EdgeInsets.all(5.0),
-                      padding: EdgeInsets.all(5.0),*/
-
-                  /*    decoration: new BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        shape: BoxShape.rectangle,
-                        color: HexColor("#E3F6F6"),
-                      ),*/
-
-                  //  child: sample2(context, userWeight1, userWeight2, userWeight3, avgWeight1, avgWeight2, avgWeight3),
                     child: WeightChart(
                           data:  [
                             WeightsSeries(
@@ -364,40 +311,6 @@ class _waipalistState1 extends State<waipalist1> {
                 ]
             )
     );
-
- /* @override
-  Widget build(BuildContext context) {
-
-    final waipas = Provider.of<List<Waipa>>(context);
-    waipas.forEach((waipa) {
-      if (waipa.date == 1) {
-        print("CHECKING");
-        weight1 = waipa.weight;
-      }
-      else {
-        //waipalist1.weightTwo = waipa.weight;
-        weight2 = waipa.weight;
-      }
-
-
-      numWeights ++;
-      totalWeights = (totalWeights + waipa.weight);
-
-      print(waipa.weight);
-    });
-
-    waipalist1.pleasebethere = 100;
-
-    print(totalWeights / numWeights);
-
-    print("WAIPA LISSSTTTT");
-//    final waipas = Provider.of<QuerySnapshot>(context);
-//    for (var doc in waipas.documents)
-//    {
-//      print(doc.data); //['weight']
-//    }
-    // return numWeights;
-    //return Container();*/
   }
 
   Widget sample2(BuildContext context, int u1, int u2, int u3, int w1, int w2, int w3) {
@@ -434,10 +347,6 @@ class _waipalistState1 extends State<waipalist1> {
                 DataPoint<double>(value: w1.toDouble(), xAxis: 1),
                 DataPoint<double>(value: w2.toDouble(), xAxis: 2),
                 DataPoint<double>(value: w3.toDouble(), xAxis: 3),
-             /*   DataPoint<double>(value: 40, xAxis: 4),
-                DataPoint<double>(value: 40, xAxis: 5),
-                DataPoint<double>(value: 9, xAxis: 6),
-                DataPoint<double>(value: 11, xAxis: 7),*/
               ],
             ),
           ],

@@ -1,16 +1,23 @@
 # wdc_login
 
-A new Flutter project.
+This repo contains all of the code used to create this application. 
+All private keys have been removed. This includes a Google json file and a Google Maps API key.
+You can get the Json file needed by following the YouTube link below. 
 
-## Getting Started
+I would recommend cloning this repo but then recreating it yourself using your own setup. 
 
-This project is a starting point for a Flutter application.
+The project uses Google Firebase. Firestore is used as the database.
 
-A few resources to get you started if this is your first Flutter project:
+The login process was set up following this series of videos: 
+https://www.youtube.com/watch?v=sfA3NWDBPZ4&list=PL4cUxeGkcC9j--TKIdkb3ISfRbJeJYQwC
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+This should also give enough of a basis to follow through and understand how Flutter works with Firebase. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The database should be as follows:
+
+contacts -> email, message, name
+users -> address, houseType, name, recBin, userPin, waste1, waste2, waste3, wasteBin
+waipa -> date, weight
+
+
+This should be all the info you need to replicate this yourself. Please contact me if there are any questions. 

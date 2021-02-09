@@ -11,7 +11,7 @@ class Contact extends StatefulWidget {
   @override
   _ContactState createState() => _ContactState();
 }
-
+//Contact page
 class _ContactState extends State<Contact> {
 
   String message = "boo";
@@ -57,12 +57,9 @@ class _ContactState extends State<Contact> {
                             new Text(
                               'Thank you for taking the time to test out this\napplication.'
                                   ' If you have any comments or suggestions \nI would love to receive them.'
-                                  ' Please use the contact\nform below or alternatively email Jardine at\njardine.chapman@gmail.com',
-                              //textAlign: TextAlign.center,
+                                  ' Please use the contact\nform below or alternatively email me at\nme@gmail.com',
                               style: TextStyle(color: Colors.black),
                             ),
-
-
                           ]
                       ),
                     ),

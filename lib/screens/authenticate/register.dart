@@ -34,7 +34,6 @@ class _RegisterState extends State<Register> {
   String wasteBin = "";
   String recBin = "";
   String userPin = "";
-//  int userPin = null;
   String houseType = "";
 
   bool validPin = false;
@@ -55,15 +54,17 @@ class _RegisterState extends State<Register> {
             child: ListView(
               children: <Widget>[
 
+                //this is just how i plan the components and make sure that its done correctly.
+
                 //column              a
-                //1. logo          b
-                //2.  row           c
+                 //1. logo          b
+                  //2.  row           c
 
                 //1. column       d
                 //1. squares    e
-                //2. column       f
+                  //2. column       f
                 //1. text boxes g
-                //3. button         h
+                  //3. button         h
 
                 Form(
                  // children: <Widget>[
@@ -279,7 +280,7 @@ class _RegisterState extends State<Register> {
                                     child: new TextFormField(
 
                                       onTap: ()async{ //for autocomplete
-                                        Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "AIzaSyCPVTCLkVO5gHEL7ktu8ozJh5rFwkuSK9E",
+                                        Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "API_KEY_GOES_HERE",
                                             mode: Mode.overlay,
                                             language: "en", components: [
                                           Component(Component.country, "nz")
@@ -297,25 +298,11 @@ class _RegisterState extends State<Register> {
                                       textAlignVertical: TextAlignVertical.center,
                                       controller: txt,
                                       decoration: textInputDecoration,
-                                  /*    decoration: InputDecoration(
-                                        //labelText: address,
-                                          fillColor: Colors.white,
-                                          enabledBorder:  OutlineInputBorder(
-                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: const Color(0xff00AAAD), width: 2)
-                                          )
-                                      ),*/
                                       style: new TextStyle(
                                         fontFamily: "Poppins",
                                         fontSize: 14, //14
                                         //fontWeight: FontWeight.bold,
                                       ),
-                                 /*     onChanged: (val)  {
-                                        setState(() => address = val);
-                                        //print(address);
-                                      },*/
                                     ),
                                   ), //text box
 
@@ -333,7 +320,7 @@ class _RegisterState extends State<Register> {
                                       ),
                                       onChanged: (val) {
                                         doesPinExist(val);
-                                        setState(() => userPin = val); //setState(() => userPin = int.parse(val));
+                                        setState(() => userPin = val);
                                       },
 
                                     ),
@@ -357,25 +344,7 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ), //text box
 
-                           /*       Container (
-                                    width: 300,
-                                    height: 50,
-                                    margin: EdgeInsets.only(bottom: 5.0, left: 0.0),
-
-                                    //start of text field for rec bin
-                                    child: new TextFormField(
-                                      textAlignVertical: TextAlignVertical.center,
-                                      decoration: textInputDecoration,
-                                      style: new TextStyle(
-                                        fontFamily: "Poppins",
-                                      ),
-                                      onChanged: (val) {
-                                        setState(() => recBin = val);
-                                      },
-                                    ),
-                                  ), *///text box
-
-                                  //trialling house type
+                                  //house type
                                   Container (
                                     width: 300,
                                     height: 50,
@@ -481,81 +450,6 @@ class _RegisterState extends State<Register> {
             )  //makes it scrollable
         )
     );
-
-
-
-
-
-
-
-
-
-
-
-
-//    return Scaffold(
-//        backgroundColor: Colors.brown[100],
-//        appBar: AppBar(
-//          backgroundColor: Colors.brown[400],
-//          elevation: 0.0,
-//          title: Text('Sign up'),
-//          actions: <Widget>[
-//            FlatButton.icon(
-//              icon: Icon(Icons.person),
-//              label: Text('Sign in'),
-//              onPressed: () {
-//                widget.toggleView(); //reverses the sign in and reg pages view
-//              },
-//            ),
-//          ],
-//        ),
-//        body: Container (
-//            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-//            child: Form(
-//              key: _formKey, //keeps track of state of form - for validation
-//                child: Column(
-//                  children: <Widget>[
-//                    SizedBox(height: 20.0),
-//                    TextFormField( //email
-//                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
-//                      onChanged: (val) {
-//                        setState(() => email = val);
-//                      },
-//                    ),
-//                    SizedBox(height: 20.0),
-//                    TextFormField( //password
-//                      obscureText: true,
-//                      validator: (val) => val.length < 6 ? 'Enter a password greater than 6 chars' : null,
-//                      onChanged: (val) {
-//                        setState(() => password = val);
-//                      },
-//                    ),
-//                    SizedBox(height: 20.0),
-//                    RaisedButton( //reg button
-//                      color: Colors.pink,
-//                      child: Text('Sign up', style: TextStyle(color: Colors.white),
-//                      ),
-//                      onPressed: () async {
-//
-//                        if(_formKey.currentState.validate()) //valid or invalid form
-//                          {
-//                            dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-//                            if(result == null)
-//                              {
-//                                setState(() => error = 'please provide a valid email');
-//                              }
-//                          }
-//                      },
-//                    ),
-//                    SizedBox(height: 12.0), //just an error output
-//                    Text (
-//                        error,
-//                    style: TextStyle(color: Colors.red)),
-//                  ],
-//                )
-//            )
-//        )
-//    );
   }
 
     Future<bool> doesPinExist(String pin) async {
@@ -570,8 +464,6 @@ class _RegisterState extends State<Register> {
         {
           validPin = true;
         }
-     // pinExists = documents.length == 1;
-
       return documents.length == 1;
 
   }

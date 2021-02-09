@@ -21,12 +21,7 @@ class _dataListState extends State<dataList> {
     final userData = Provider.of<QuerySnapshot>(context);
     for (var doc in userData.documents)
       {
-        //currentU = u.user;
-
-        print("this is printing");
         print(doc.data['uid']);
-
-
       }
 
     return Container();
@@ -37,7 +32,6 @@ class waipalist extends StatefulWidget {
 
   @override
   waipalistState createState() => waipalistState();
-  static int pleasebethere;
 
   static int weightOne = 110;
   static int weightTwo;
@@ -45,7 +39,6 @@ class waipalist extends StatefulWidget {
 
 }
 
-//this was _ but i need to access it
 class waipalistState extends State<waipalist> {
   int numWeights = 0;
   int totalWeights = 0;
@@ -72,17 +65,8 @@ class waipalistState extends State<waipalist> {
       print(waipa.weight);
     });
 
-    waipalist.pleasebethere = 10;
-
     print(totalWeights / numWeights);
 
-    print("WAIPA LISSSTTTT");
-//    final waipas = Provider.of<QuerySnapshot>(context);
-//    for (var doc in waipas.documents)
-//    {
-//      print(doc.data); //['weight']
-//    }
- // return numWeights;
     return Container();
   }
 

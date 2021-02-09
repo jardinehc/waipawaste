@@ -9,7 +9,7 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final user = Provider.of<User>(context);
-    //print(user);
+
     //dynamically change what the user sees based on authentcation
     //using streams to listen for authentication
 

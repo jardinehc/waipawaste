@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wdc_login/models/user.dart';
 import 'package:wdc_login/screens/authenticate/sign_in.dart';
-import 'package:wdc_login/screens/home/history.dart';
 import 'package:wdc_login/services/database.dart';
 import 'package:wdc_login/services/weights_series.dart';
 import 'package:wdc_login/shared/constants.dart';

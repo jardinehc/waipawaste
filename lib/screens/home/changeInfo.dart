@@ -18,6 +18,8 @@ class changeInfo extends StatefulWidget {
 
 class _changeInfoState extends State<changeInfo> {
 
+  //where the user changes their info
+
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>(); //used to identify form
   bool loading = false;
@@ -34,13 +36,6 @@ class _changeInfoState extends State<changeInfo> {
  // String dynamicHouseType = "";
 
   var txt = TextEditingController();
-/*
-  String home(String newVal)
-  {
-    dynamicHouseType = newVal;
-    return this.dynamicHouseType;
-  }*/
-
 
   List<String> _houseTypes = <String>['', 'Young Couple (no kids)', 'Older Couple (no kids)', 'Family with Children under 5 years',
     'Family with Children over 5 years', 'Group Living (flatting)', 'Singular Occupant'];
@@ -230,7 +225,7 @@ class _changeInfoState extends State<changeInfo> {
                                     child: new TextFormField(
                                      // initialValue: userData.address,
                                     onTap: ()async{
-                                      Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "AIzaSyCPVTCLkVO5gHEL7ktu8ozJh5rFwkuSK9E",
+                                      Prediction p = await PlacesAutocomplete.show(context: context, apiKey: "API_KEY",
                                           mode: Mode.overlay,
                                           language: "en", components: [
                                             Component(Component.country, "nz")
@@ -254,19 +249,6 @@ class _changeInfoState extends State<changeInfo> {
                                         fontSize: 14,
                                         //fontWeight: FontWeight.bold,
                                       ),
-
-
-                                    /*  initialValue: userData.address,
-                                    textAlignVertical: TextAlignVertical
-                                          .center,
-                                      decoration: textInputDecoration,
-                                      style: new TextStyle(
-                                        fontFamily: "Poppins",
-                                        fontSize: 14,
-                                      ),
-                                      onChanged: (val) {
-                                        setState(() => _newAddress = val);
-                                      },*/
                                     ),
                                   ), //text box
 
@@ -343,14 +325,6 @@ class _changeInfoState extends State<changeInfo> {
                                                           snapshot.data.waste3
                                                       );
                                                   },
-
-                                                 /* onChanged: (val) {
-                                                    setState(() {
-                                                    //  value: val;
-                                                      dynamicHouseType = val;
-                                                      _newHouseType = val;
-                                                    });
-                                                  },*/
                                                   value: dynamicHouseType,
                                                   isDense: true,
                                                   items: _houseTypes.map((
