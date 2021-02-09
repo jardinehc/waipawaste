@@ -16,7 +16,9 @@ This should also give enough of a basis to follow through and understand how Flu
 The database should be as follows:
 
 contacts -> email, message, name
+
 users -> address, houseType, name, recBin, userPin, waste1, waste2, waste3, wasteBin
+
 waipa -> date, weight
 
 
